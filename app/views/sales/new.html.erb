@@ -1,0 +1,34 @@
+<h2>Welcome to new Sales page</h2>
+
+    <%= form_for :sales do |f| %>
+        <fieldset class="form-group">
+          <label for="name">Title</label>
+          <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="email">Message</label>
+          <%= f.text_area :body, class: "form-control", placeholder: "Message" %>
+          <!-- display flash messages  -->
+          <!-- <% flash.each do |name, msg| %>
+          <div id="flash"> &emsp; <i><%= msg %></i></div>
+          <% end %> -->
+        </fieldset>
+        <fieldset class="form-group">
+          <%= f.hidden_field :city_id, class: "form-control", :value => @city.id %>
+        </fieldset>
+        <fieldset class="form-group">
+          <%= f.hidden_field :user_id, class: "form-control", :value => current_user.id %>
+        </fieldset>
+        <fieldset class="form-group">
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+          <%= link_to "Cancel", city_path(@city.id), class: "btn btn-primary" %>
+        </fieldset>
+    <% end %>
+
+    t.string   "title"
+    t.text     "body"
+    t.string   "category"
+    t.float    "price"
+    t.integer  "zipcode"
+    t.integer  "views"
+    t.integer  "user_id"

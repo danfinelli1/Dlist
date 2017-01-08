@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   # Sell Routes
   get '/sales', to: 'sales#index', as: 'sales'
+  get '/sales/new', to: 'sales#new', as: 'new_sale' 
 
 end

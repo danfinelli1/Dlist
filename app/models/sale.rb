@@ -1,2 +1,4 @@
 class Sale < ApplicationRecord
+  belongs_to :user, dependent: :destroy
+
 end
