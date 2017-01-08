@@ -1,2 +1,13 @@
-<h1>Event#edit</h1>
-<p>Find me in app/views/event/edit.html.erb</p>
+Edit Events Page
+
+<%= form_for :event, :method => :put do |f| %>
+
+<p> Title: <%= f.text_field :title, placeholder: :title %></p>
+<p> Description: <%= f.text_area :body %></p>
+<p> Category: <%= f.text_field :category %></p>
+<p> Price: <%= f.number_field :price %></p>
+<p> Address: <%= f.text_field :address %></p>
+<p> Date: <%= f.date_field :event_date %></p>
+<%= f.hidden_field :user_id, :value => current_user.id%>
+<%= f.submit "Save Event" %>
+<% end %>

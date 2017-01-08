@@ -1,2 +1,14 @@
-<h1>Event#new</h1>
-<p>Find me in app/views/event/new.html.erb</p>
+
+  <p>New Event</p>
+  <%= form_for @event, url:"/events" do |f| %>
+
+  <p> Title: <%= f.text_field :title %></p>
+  <p> Description: <%= f.text_area :body %></p>
+  <p> Category: <%= f.text_field :category %></p>
+  <p> Price: <%= f.number_field :price %></p>
+  <p> Address: <%= f.text_field :address %></p>
+  <p> Date: <%= f.date_field :event_date %></p>
+  <%= f.hidden_field :user_id, :value => current_user.id%>
+  <%= button_to("Create Event", create_event_path , :method => :post) %>
+  <% end %>
+</div>

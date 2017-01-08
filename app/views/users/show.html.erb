@@ -1,3 +1,21 @@
 <div>
-  Welcome, <%= @user.first_name %>!
+  Welcome, <%= @user.first_name%>!
+  <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
+
+  <% if !@user.events.empty? %>
+        <p> Posts: </p>
+        <% @user.events.each do |ele| %>
+          <div class="post-row">
+            <p><%= link_to ele.title,  event_path(ele.id) %><br>
+            <%= ele.body %><br>
+          </div>
+          <p class="pull-right">
+            <%= link_to("Edit", edit_event_path(ele.id), class: 'btn btn-info') %>
+            <%= link_to("Delete", event_path(ele.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{ele.title}?"}, class: 'btn btn-danger') %>
+          </p>
+        <% end %>
+        <% else %>
+          <h4>No Posts Yet</h4>
+        <% end %>
+
 </div>
