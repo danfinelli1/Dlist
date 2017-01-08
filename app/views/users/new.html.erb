@@ -1,0 +1,23 @@
+Sign Up
+
+<%= form_for @user do |f| %>
+  <div>
+    <%= f.text_field :first_name, placeholder: "First Name" %>
+  </div>
+  <div>
+    <%= f.text_field :last_name, placeholder: "Last Name" %>
+  </div>
+  <div>
+    <%= f.text_field :password_digest, placeholder: "City" %>
+  </div>
+  <div>
+    <%= f.text_field :email, placeholder: "Email" %>
+  </div>
+  <div>
+    <%= f.password_field :password_digest, placeholder: "Password" %>
+  </div>
+  <div>
+    <%= f.hidden_field :rating, :value => 5 %>
+  </div>
+  <%= f.submit "Sign Up" %>
+<% end %>
