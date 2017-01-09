@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
 
 
-  # Sell Routes
+  # Sale Routes
   get '/sales', to: 'sales#index', as: 'sales'
-  get '/sales/new', to: 'sales#new', as: 'new_sale' 
+  get '/sales/new', to: 'sales#new', as: 'new_sale'
+  post '/sales', to: 'sales#create', as: 'create_sale'
+  get '/sales/:id', to: 'sales#show', as: 'sale'
 
 end
