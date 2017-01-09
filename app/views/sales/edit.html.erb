@@ -32,6 +32,6 @@
 
         <fieldset class="form-group">
           <%= f.submit "Submit", class: "btn btn-primary" %>
-          <%= link_to "Cancel", user_path, class: "btn btn-primary" %>
+          <%= link_to "Cancel", user_path(current_user), class: "btn btn-primary" %>
         </fieldset>
     <% end %>
