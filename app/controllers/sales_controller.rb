@@ -20,21 +20,19 @@ class SalesController < ApplicationController
       redirect_to sale_path(sale_id)
     else
       flash[:error] = new_sale.errors.full_messages[0] +"!"
-      # redirect_to new_city_post_path(current_city)
     end
   end
 
   def update
     @sale = Sale.find_by_id(params[:id])
-    # finds number of views on existing sale for auto populating in edit form (might not be needed)
-    @sale_view = Sale.views
-    @sale.update(post_params)
+    @sale.update(sale_params)
+    redirect_to user_path(current_user)
   end
 
   def destroy
     @sale = Sale.find_by_id(params[:id])
     Sale.destroy(@sale)
-    redirect_to sales_path
+    redirect_to user_path
   end
 
   private

@@ -8,15 +8,11 @@
         <fieldset class="form-group">
           <label for="email">Descpription</label>
           <%= f.text_area :body, class: "form-control", placeholder: "Descpription" %>
-          <!-- display flash messages  -->
-          <!-- <% flash.each do |name, msg| %>
-          <div id="flash"> &emsp; <i><%= msg %></i></div>
-          <% end %> -->
 
         </fieldset>
         <fieldset class="form-group">
         <label for="name">Category</label>
-        <%= f.text_field :category, class: "form-control", placeholder: "Category" %>
+        <%= f.select :category, ["Bikes", "Electronics", "Books", "Cars", "Games", "Other" ], class: "form-control", placeholder: "Category" %>
         </fieldset>
 
         <fieldset class="form-group">

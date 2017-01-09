@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   get '/sales/new', to: 'sales#new', as: 'new_sale'
   post '/sales', to: 'sales#create', as: 'create_sale'
   get '/sales/:id', to: 'sales#show', as: 'sale'
+  get '/sales/:id/edit', to: 'sales#edit', as: 'sale_edit'
+  patch '/sales/:id/edit', to: 'sales#update'
+  post '/sales/:id/edit', to: 'sales#update'
   delete '/sales/:id', to: 'sales#destroy'
 
 end
