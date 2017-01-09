@@ -1,6 +1,7 @@
 class SalesController < ApplicationController
 
   def index
+    @sales = Sale.all
   end
 
   def show
@@ -9,11 +10,9 @@ class SalesController < ApplicationController
 
   def new
     @sale = Sale.new
-    # @user = User.find_by_id(params[:user_id])
   end
 
   def create
-    # current_user = User.find_by_id(params[:user_id])
     new_sale = Sale.new(sale_params)
 
     if new_sale.save
@@ -25,9 +24,23 @@ class SalesController < ApplicationController
     end
   end
 
+  def update
+    @sale = Sale.find_by_id(params[:id])
+    # finds number of views on existing sale for auto populating in edit form (might not be needed)
+    @sale_view = Sale.views
+    @sale.update(post_params)
+  end
+
+  def destroy
+    @sale = Sale.find_by_id(params[:id])
+    Sale.destroy(@sale)
+    redirect_to sales_path
+  end
+
+  private
 
   def sale_params
-  params.require(:sale).permit(:title, :body, :user_id, :category, :price, :zipcode, :views)
+  params.require(:sale).permit(:title, :body, :user_id, :category, :price, :zipcode)
   end
 
 end

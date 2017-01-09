@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Edit user routes
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
   patch '/users/:id', to: 'users#update'
+  delete '/users/:id', to: 'users#destroy'
 
   get '/events', to: 'event#index', as: 'all_events'
   get '/events/new', to: 'event#new', as: 'new_event'
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   get '/sales/new', to: 'sales#new', as: 'new_sale'
   post '/sales', to: 'sales#create', as: 'create_sale'
   get '/sales/:id', to: 'sales#show', as: 'sale'
+  delete '/sales/:id', to: 'sales#destroy'
 
   # Rent Routes
   get '/rents', to: 'rent#index', as: 'all_rents'

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :events, through: :jointables
 
   has_many :rents, dependent: :destroy
-  has_many :sales, dependent: :destroy
+  has_many :sales
 
   has_many :jointables, dependent: :destroy
 
