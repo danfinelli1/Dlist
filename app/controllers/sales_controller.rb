@@ -1,6 +1,7 @@
 class SalesController < ApplicationController
 
   def index
+    @sales = Sale.all 
   end
 
   def show
@@ -9,11 +10,9 @@ class SalesController < ApplicationController
 
   def new
     @sale = Sale.new
-    # @user = User.find_by_id(params[:user_id])
   end
 
   def create
-    # current_user = User.find_by_id(params[:user_id])
     new_sale = Sale.new(sale_params)
 
     if new_sale.save
@@ -25,6 +24,7 @@ class SalesController < ApplicationController
     end
   end
 
+  private
 
   def sale_params
   params.require(:sale).permit(:title, :body, :user_id, :category, :price, :zipcode, :views)

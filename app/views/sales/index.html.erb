@@ -1,3 +1,7 @@
 <h2>Welcome to the sales index page</h2>
 
 <h2><%= link_to "Create Post", new_sale_path, class: "btn btn-primary" %></h2>
+
+  <% @sales.each do |sale| %>
+    <h2><%= link_to sale.title, sale_path(sale) %></h2>
+  <% end %>
