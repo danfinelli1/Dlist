@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new', as: 'new_user'
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'user'
+  # Edit user routes
+  get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
+  patch '/users/:id', to: 'users#update'
 
   get '/events', to: 'event#index', as: 'all_events'
   get '/events/new', to: 'event#new', as: 'new_event'
@@ -19,5 +22,12 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
   post '/sessions', to: 'sessions#create'
+
+
+  # Sale Routes
+  get '/sales', to: 'sales#index', as: 'sales'
+  get '/sales/new', to: 'sales#new', as: 'new_sale'
+  post '/sales', to: 'sales#create', as: 'create_sale'
+  get '/sales/:id', to: 'sales#show', as: 'sale'
 
 end

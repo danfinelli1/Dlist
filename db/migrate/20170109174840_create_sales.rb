@@ -4,10 +4,9 @@ class CreateSales < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :body
       t.string :category
-      t.float :price
+      t.decimal :price
       t.integer :zipcode
-      t.integer :views
-      t.integer :user_id
+      t.belongs_to :user
 
       t.timestamps
     end

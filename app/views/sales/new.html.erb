@@ -1,0 +1,43 @@
+<h2>Welcome to new Sales page</h2>
+
+    <%= form_for @sale, url: create_sale_path do |f| %>
+        <fieldset class="form-group">
+          <label for="name">Title</label>
+          <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="email">Descpription</label>
+          <%= f.text_area :body, class: "form-control", placeholder: "Descpription" %>
+          <!-- display flash messages  -->
+          <!-- <% flash.each do |name, msg| %>
+          <div id="flash"> &emsp; <i><%= msg %></i></div>
+          <% end %> -->
+
+        </fieldset>
+        <fieldset class="form-group">
+        <label for="name">Category</label>
+        <%= f.text_field :category, class: "form-control", placeholder: "Category" %>
+        </fieldset>
+
+        <fieldset class="form-group">
+        <label for="name">Price</label>
+        <%= f.number_field :price, class: "form-control", placeholder: "Price" %>
+        </fieldset>
+
+        <fieldset class="form-group">
+        <label for="name">Zipcode</label>
+        <%= f.number_field :zipcode, class: "form-control", placeholder: "Zipcode" %>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <%= f.hidden_field :user_id, class: "form-control", :value => current_user.id %>
+        </fieldset>
+        
+        <fieldset class="form-group">
+          <%= f.hidden_field :views, class: "form-control", :value => 0 %>
+        </fieldset>
+        <fieldset class="form-group">
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+          <%= link_to "Cancel", sales_path, class: "btn btn-primary" %>
+        </fieldset>
+    <% end %>

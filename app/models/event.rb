@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
-  belongs_to :user
-  has_many :users, dependent: :destroy
+  has_many :jointables, dependent: :destroy
+  has_many :users, through: :jointables
 end
