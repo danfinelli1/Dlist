@@ -1,13 +1,13 @@
-
+<%= @event %>
 <%= @event.title %>
 <%= @event.category %>
 <%= @event.price %>
 <%= @event.address %>
 <%= @event.date %>
 <% if @event.users.include?(current_user) %>
-  unattend button coming soon
+  <%= button_to 'Unattend', { :controller => :event, :action => :remove_attender }, method: :patch %>
 <% else %>
-<%= button_to 'Attend', { :controller => :event, :action => :add_attender } %>
+  <%= button_to 'Attend', { :controller => :event, :action => :add_attender } %>
 <% end %>
 Attending:
 <% @event.users.distinct.each do |attender| %>

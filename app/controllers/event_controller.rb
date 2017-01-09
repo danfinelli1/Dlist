@@ -9,6 +9,12 @@ class EventController < ApplicationController
         redirect_to event_path(@event)
     end
 
+    def remove_attender
+        @event = Event.find(params[:id])
+        @event.users.delete(current_user)
+        redirect_to event_path(@event)
+    end
+
     def new
         @event = Event.new
     end

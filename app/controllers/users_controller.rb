@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @attending = User.find(current_user).events
   end
 
 
