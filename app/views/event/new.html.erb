@@ -7,7 +7,7 @@
   <p> Category: <%= f.text_field :category %></p>
   <p> Price: <%= f.number_field :price %></p>
   <p> Address: <%= f.text_field :address %></p>
-  <p> Date: <%= f.date_field :event_date %></p>
+  <p> Date: <%= f.date_field :date %></p>
   <%= f.hidden_field :user_id, :value => current_user.id%>
   <%= button_to("Create Event", create_event_path , :method => :post) %>
   <% end %>
