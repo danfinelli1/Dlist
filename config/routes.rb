@@ -30,4 +30,15 @@ Rails.application.routes.draw do
   post '/sales', to: 'sales#create', as: 'create_sale'
   get '/sales/:id', to: 'sales#show', as: 'sale'
 
+  # Rent Routes
+  get '/rents', to: 'rent#index', as: 'all_rents'
+  get '/rents/new', to: 'rent#new', as: 'new_rent'
+  get '/rents/:id', to: 'rent#show', as: 'rent'
+  get '/rents/:id/edit', to: 'rent#edit', as: 'edit_rent'
+  put '/rents/:id/edit', to: 'rent#update'
+  patch '/rents/:id/edit', to: 'rent#update'
+  post '/rents', to: 'rent#create', as: 'create_rent'
+  delete '/rents/:id', to: 'rent#destroy'
+
+
 end
