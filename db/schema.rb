@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108232930) do
+ActiveRecord::Schema.define(version: 20170109182609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,25 +19,47 @@ ActiveRecord::Schema.define(version: 20170108232930) do
     t.string   "title"
     t.text     "body"
     t.string   "category"
-    t.float    "price"
+    t.decimal  "price"
     t.string   "address"
-    t.string   "event_date"
+    t.string   "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jointables", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
+    t.integer  "event_id"
+    t.index ["event_id"], name: "index_jointables_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_jointables_on_user_id", using: :btree
+  end
+
+  create_table "rents", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "category"
+    t.decimal  "price"
+    t.string   "address"
+    t.integer  "sqfootage"
+    t.integer  "bed"
+    t.integer  "bath"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rents_on_user_id", using: :btree
   end
 
   create_table "sales", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
     t.string   "category"
-    t.float    "price"
+    t.decimal  "price"
     t.integer  "zipcode"
-    t.integer  "views"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sales_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,13 +71,7 @@ ActiveRecord::Schema.define(version: 20170108232930) do
     t.string   "city"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "sale_id"
-    t.integer  "event_id"
-    t.index ["event_id"], name: "index_users_on_event_id", using: :btree
-    t.index ["sale_id"], name: "index_users_on_sale_id", using: :btree
+    t.float    "balance"
   end
 
-  add_foreign_key "events", "users"
-  add_foreign_key "users", "events"
-  add_foreign_key "users", "sales"
 end
