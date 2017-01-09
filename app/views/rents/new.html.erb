@@ -1,0 +1,16 @@
+
+  <p>New Rent</p>
+  <%= form_for @rent, url:"/rents" do |f| %>
+
+  <p> Title: <%= f.text_field :title %></p>
+  <p> Description: <%= f.text_area :body %></p>
+  <p> Category: <%= f.text_field :category %></p>
+  <p> Price: <%= f.number_field :price %></p>
+  <p> Address: <%= f.text_field :address %></p>
+  <p> Date: <%= f.date_field :sqfootage %></p>
+  <p> Bed: <%= f.number_field :bed %></p>
+  <p> Bath: <%= f.number_field :bath %></p>
+  <%= f.hidden_field :user_id, :value => current_user.id%>
+  <%= button_to("Create Rent", create_rent_path , :method => :post) %>
+  <% end %>
+</div>
