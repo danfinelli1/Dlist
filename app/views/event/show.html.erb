@@ -4,3 +4,13 @@
 <%= @event.price %>
 <%= @event.address %>
 <%= @event.date %>
+<% if @event.users.include?(current_user) %>
+  unattend button coming soon
+<% else %>
+<%= button_to 'Attend', { :controller => :event, :action => :add_attender } %>
+<% end %>
+Attending:
+<% @event.users.distinct.each do |attender| %>
+  <%= attender.first_name %>
+  <%= attender.last_name %>
+<% end %>

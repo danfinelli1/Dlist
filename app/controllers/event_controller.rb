@@ -3,6 +3,12 @@ class EventController < ApplicationController
         @events = Event.all
     end
 
+    def add_attender
+        @event = Event.find_by_id(params[:id])
+        @event.users << current_user
+        redirect_to event_path(@event)
+    end
+
     def new
         @event = Event.new
     end
@@ -14,6 +20,7 @@ class EventController < ApplicationController
 
     def show
         @event = Event.find_by_id(params[:id])
+        @attending = Event.find_by_id(params[:id]).users
     end
 
     def edit

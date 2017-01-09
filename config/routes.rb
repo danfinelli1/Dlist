@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   patch '/events/:id/edit', to: 'event#update'
   post '/events', to: 'event#create', as: 'create_event'
   delete '/events/:id', to: 'event#destroy'
+  post '/events/:id', to: 'event#add_attender'
 
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
