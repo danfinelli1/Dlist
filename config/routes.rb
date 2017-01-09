@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   patch '/events/:id/edit', to: 'event#update'
   post '/events', to: 'event#create', as: 'create_event'
   delete '/events/:id', to: 'event#destroy'
+  post '/events/:id', to: 'event#add_attender'
+  patch '/events/:id', to: 'event#remove_attender'
 
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
@@ -30,6 +32,9 @@ Rails.application.routes.draw do
   get '/sales/new', to: 'sales#new', as: 'new_sale'
   post '/sales', to: 'sales#create', as: 'create_sale'
   get '/sales/:id', to: 'sales#show', as: 'sale'
+  get '/sales/:id/edit', to: 'sales#edit', as: 'sale_edit'
+  patch '/sales/:id/edit', to: 'sales#update'
+  post '/sales/:id/edit', to: 'sales#update'
   delete '/sales/:id', to: 'sales#destroy'
 
   # Rent Routes
