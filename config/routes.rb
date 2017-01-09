@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Edit user routes
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
   patch '/users/:id', to: 'users#update'
+  delete '/users/:id', to: 'users#destroy'
 
   get '/events', to: 'event#index', as: 'all_events'
   get '/events/new', to: 'event#new', as: 'new_event'
