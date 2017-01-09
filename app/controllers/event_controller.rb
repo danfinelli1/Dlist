@@ -3,6 +3,18 @@ class EventController < ApplicationController
         @events = Event.all
     end
 
+    def add_attender
+        @event = Event.find_by_id(params[:id])
+        @event.users << current_user
+        redirect_to event_path(@event)
+    end
+
+    def remove_attender
+        @event = Event.find(params[:id])
+        @event.users.delete(current_user)
+        redirect_to event_path(@event)
+    end
+
     def new
         @event = Event.new
     end
@@ -14,6 +26,7 @@ class EventController < ApplicationController
 
     def show
         @event = Event.find_by_id(params[:id])
+        @attending = Event.find_by_id(params[:id]).users
     end
 
     def edit
@@ -38,6 +51,6 @@ class EventController < ApplicationController
     private
 
     def event_params
-        params.require(:event).permit(:title, :body, :event_date, :category, :price, :address, :user_id)
+        params.require(:event).permit(:title, :body, :date, :category, :price, :address, :user_id)
     end
 end

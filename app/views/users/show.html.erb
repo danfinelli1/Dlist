@@ -1,19 +1,29 @@
 <div>
-  Welcome, <%= @user.first_name%>!
-  <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
+    Welcome,
+    <%= @user.first_name%>!<br>
+    <%= @user.first_name%>
+    is attending:
+    <% @attending.each do |attending|%>
+    <br>  <%= attending.title%>
+    <%end%>
+    <br>
+    <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
 
-  <% if !@user.events.empty? %>
-        <p> Posts: </p>
-        <% @user.events.each do |ele| %>
-          <div class="post-row">
-            <p><%= link_to ele.title,  event_path(ele.id) %><br>
+    <% if !@user.events.empty? %>
+    <p>
+        Events:
+    </p>
+    <% @user.events.each do |ele| %>
+    <div class="post-row">
+        <p><%= link_to ele.title,  event_path(ele.id) %><br>
             <%= ele.body %><br>
-          </div>
-          <p class="pull-right">
+        </div>
+        <p class="pull-right">
             <%= link_to("Edit", edit_event_path(ele.id), class: 'btn btn-info') %>
             <%= link_to("Delete", event_path(ele.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{ele.title}?"}, class: 'btn btn-danger') %>
-          </p>
+        </p>
         <% end %>
+
         <% else %>
           <h4>No events Yet</h4>
         <% end %>
@@ -37,6 +47,6 @@
 
 </div>
 
-<% if current_user == @user%>
+    <% if current_user == @user%>
     <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
-<%end%>
+    <%end%>
