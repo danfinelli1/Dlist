@@ -21,7 +21,7 @@
 
         <fieldset class="form-group">
         <label for="name">Price</label>
-        <%= f.number_field :price, class: "form-control", placeholder: "Price" %>
+        <%= f.number_field :price, :step => 0.01 , class: "form-control", placeholder: "Price" %>
         </fieldset>
 
         <fieldset class="form-group">
@@ -32,7 +32,7 @@
         <fieldset class="form-group">
           <%= f.hidden_field :user_id, class: "form-control", :value => current_user.id %>
         </fieldset>
-        
+
         <fieldset class="form-group">
           <%= f.hidden_field :views, class: "form-control", :value => 0 %>
         </fieldset>

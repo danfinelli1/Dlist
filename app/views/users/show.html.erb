@@ -15,8 +15,24 @@
           </p>
         <% end %>
         <% else %>
-          <h4>No Posts Yet</h4>
+          <h4>No events Yet</h4>
         <% end %>
+
+    <% if !@user.sales.empty? %>
+          <p> Posts: </p>
+          <% @user.sales.each do |sale| %>
+            <div class="post-row">
+              <p><%= link_to sale.title,  sale_path(sale.id) %><br>
+              <%= sale.body %><br>
+            </div>
+            <p class="pull-right">
+              <!--  link_to("Edit", edit_sale_path(sale.id), class: 'btn btn-info')  -->
+              <%= link_to("Delete", sale_path(sale.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger') %>
+            </p>
+          <% end %>
+          <% else %>
+            <h4>No Posts Yet</h4>
+          <% end %>
 
 </div>
 
