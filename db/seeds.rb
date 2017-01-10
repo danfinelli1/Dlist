@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Sale Seed
+# Sale Seed NOTE: need to have at least one user to seed sales(Make sure user_id)
 Sale.destroy_all
 
 Sale.create({title: "Awesome Mountain Bike", body: "Slightly used Ibis SLR with custom after market everything", category: "Bikes", price: 2000, zipcode: 94577, user_id: 7})

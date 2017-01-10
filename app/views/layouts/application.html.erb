@@ -10,13 +10,12 @@
 
     <body>
 
-
     <div class="head-nav">
         <% if current_user %>
-      
+
             <%= link_to "Mailbox", conversations_path %> | <%= link_to "Profile", user_path(current_user) %> | <%= link_to "Log Out", logout_path %> |
         <% else %>
-            <%= link_to "Create Account", new_user_path %> | <%= link_to "Log In", login_path %>
+            <%= link_to "Create Account", new_user_path %> | <%= link_to "Log In", login_path %> |
           <% end %>
             <%= link_to "Home", site_path %>
     </div>
