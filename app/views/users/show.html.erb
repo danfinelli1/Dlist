@@ -7,13 +7,13 @@
     <br>
     <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
 
-
     <br>
     <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
 
     <p>
         Events:
     </p>
+
     <% @event = Event.all%>
     <% @event.each do |ele| %>
     <div class="post-row">

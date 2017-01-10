@@ -9,6 +9,8 @@
       <%= link_to "Contact Seller", sales_path, class: "btn btn-success" %>
     </div>
   </div>
+  Rate the seller:
+  <%= rating_for @user, 'rating', star: @user.rating %>
 
   <div class="row sale-body">
     <div class="col-md-12">
