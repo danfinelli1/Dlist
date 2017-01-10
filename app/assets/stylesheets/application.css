@@ -14,13 +14,20 @@
  *= require_tree .
  *= require_self
  */
-
+ .profile-picture {
+ height: 200px;
+ width: 200px;
+}
  .conversation {
    padding: 10px;
    border: 1px solid lightgrey;
    border-radius: 1%;
+<<<<<<< HEAD
  }
 
+=======
+}
+>>>>>>> eef867cd70f40ab64010b7e050262b2aef1bc934
  .head-nav a {
    color: white !important;
  }
