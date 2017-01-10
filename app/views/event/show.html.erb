@@ -1,9 +1,11 @@
-<%= @event %>
 <%= @event.title %>
+<br>
 <%= @event.category %>
-<%= @event.price %>
-<%= @event.address %>
-<%= @event.date %>
+<br>
+<%= @event.price %><br>
+<%= @event.address %><br>
+<%= @event.zipcode %>
+<%= @event.date %><br>
 <% if @event.users.include?(current_user) %>
 <%= button_to 'Unattend', { :controller => :event, :action => :remove_attender }, method: :patch %>
 <% else %>
