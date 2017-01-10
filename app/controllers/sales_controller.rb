@@ -1,7 +1,17 @@
 class SalesController < ApplicationController
 
   def index
-    @sales = Sale.all
+    if params[:category]
+      @sales = Sale.where(:category => params[:category])
+    else
+      @sales = Sale.all
+    end
+
+    if params[:price]
+      @sales = Sale.where('price < ?', params[:price])
+    end
+
+
   end
 
   def show

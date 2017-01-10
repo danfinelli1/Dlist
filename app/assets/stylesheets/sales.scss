@@ -5,11 +5,27 @@
 .card {
   border: 1px solid black;
   margin-top: 15px;
-  padding: 2px 2px;
+  padding: 3px 2px;
 }
 
 .card-img-top {
-  width: 29.3rem;
+  width: 29.4rem;
   border: 1px solid black;
   text-align: center;
+}
+
+.price {
+  display: inline;
+  float: right;
+  margin-top: 3px;
+  padding-top: 2px;
+  margin-right: 2px;
+}
+
+.create-post, .undo-filter {
+  float: right;
+}
+
+.price-filters {
+  text-align: right;
 }
