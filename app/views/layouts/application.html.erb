@@ -11,6 +11,7 @@
     <body>
         <ul>
             <% if current_user %>
+            <li><%= link_to "Mailbox", conversations_path %></li>
             <li><%= link_to "Profile", user_path(current_user) %></li>
             <li><%= link_to "Log Out", logout_path %></li>
         <% else %>
@@ -34,6 +35,6 @@
       </div>
     </div>
   </div>
-  
+
     </body>
 </html>

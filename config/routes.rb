@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
 
 
+  get 'messages/index'
+
+  get 'messages/new'
+
+  get 'messages/create'
+
+  get 'conversations/index'
+
+  get 'conversations/create'
+
   get '/', to: 'site#index', as: 'site'
 
   get '/signup', to: 'users#new', as: 'new_user'
@@ -26,7 +36,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   post '/sessions', to: 'sessions#create'
 
-
   # Sale Routes
   get '/sales', to: 'sales#index', as: 'sales'
   get '/sales/new', to: 'sales#new', as: 'new_sale'
@@ -46,6 +55,11 @@ Rails.application.routes.draw do
   patch '/rents/:id/edit', to: 'rents#update'
   post '/rents', to: 'rents#create', as: 'create_rent'
   delete '/rents/:id', to: 'rents#destroy'
+
+  #Mailbox Routes
+  resources :conversations do
+    resources :messages
+  end
 
 
 end
