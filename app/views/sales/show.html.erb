@@ -1,10 +1,25 @@
-<h2>hello from the show page</h2>
-<h2><%= @sale.title %></h2>
-<br />
-<p>Category: <%= @sale.category %></p>
-<br />
-<p>Price: <%= @sale.price %></p>
-<br />
-<p>Location: <%= @sale.zipcode %></p>
-<br />
-<p><%= @sale.body %></p>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <!-- Category filters -->
+      <%= link_to "Back", sales_path, class: "btn btn-primary" %>
+      <!-- Need to change once messaging is implemented -->
+      <%= link_to "Contact Seller", sales_path, class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <div class="row sale-body">
+    <div class="col-md-12">
+      <h1><strong><%= @sale.title %></strong> - <em>  Location: (<%= @sale.zipcode %>)</em></h1>
+            <!-- NOTE: Add loop to generate all images associated with the post -->
+            <img class="sale-img" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" />
+            <img class="sale-img" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" />
+            <img class="sale-img" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" />
+            <img class="sale-img" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" />
+            <h3><strong>Asking Price:</strong> <%= number_to_currency(@sale.price) %></h3>
+            <h4><%= @sale.body %></h4>
+    </div>
+  </div>
+</div>
