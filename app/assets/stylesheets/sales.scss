@@ -1,3 +1,42 @@
 // Place all the styles related to the sales controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card {
+  border: 1px solid black;
+  margin-top: 15px;
+  padding: 3px 2px;
+}
+
+.card-img-top {
+  width: 29.4rem;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.price {
+  display: inline;
+  float: right;
+  margin-top: 3px;
+  padding-top: 2px;
+  margin-right: 2px;
+}
+
+.create-post {
+  float: right;
+}
+
+.btn {
+  margin-top: 5px;
+}
+
+.sale-img {
+  height: 20rem;
+  margin: 0 auto;
+}
+
+
+// temp
+.sale-body {
+  margin: 0 auto;
+}

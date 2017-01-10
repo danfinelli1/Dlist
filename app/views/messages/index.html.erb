@@ -1,0 +1,24 @@
+<div class="conversation">
+  <% if @show_more %>
+   <%= link_to 'Show Previous', '?m=all' %>
+  <% end %>
+  <% @messages.each do |message| %>
+    <% if message.body %>
+      <% user = User.find(message.user_id) %>
+    <div><h5><strong><%= user.first_name %></strong>  <i><%= message.message_time %></i></h5></div>
+    <div><%= message.body %></div>
+    <% end %>
+  <% end %>
+</div>
+<br>
+<%= form_for [@conversation, @message] do |f| %>
+  <form>
+    <fieldset class="form-group">
+      <%= f.text_area :body, class: "form-control", placeholder: "Message"  %>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= f.hidden_field :user_id, class: "form-control", value: current_user.id %>
+      <%= f.submit "Reply", class: "btn btn-primary"%>
+    </fieldset>
+  </form>
+<% end %>
