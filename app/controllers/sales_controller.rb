@@ -10,8 +10,6 @@ class SalesController < ApplicationController
     if params[:price]
       @sales = Sale.where('price < ?', params[:price])
     end
-
-
   end
 
   def show
