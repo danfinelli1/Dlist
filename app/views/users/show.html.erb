@@ -1,29 +1,39 @@
-<div>
-    Welcome,
-    <%= @user.first_name%>!<br>
-    <%= @user.first_name%>
-    is attending:
-
-    <br>
-    <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-5">
+          <h3>Welcome,
+          <%= @user.first_name%>!</h3>
+          <br>
+          <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
+          <br>
+      </div>
 
     <br>
     <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
+      <div class="col-md-7">
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
     <p>
         Events:
     </p>
 
     <% @event = Event.all%>
     <% @event.each do |ele| %>
+    <div class="row">
+
+    </div>
     <div class="post-row">
         <p><%= link_to ele.title,  event_path(ele.id) %><br>
             <%= ele.body %><br>
         </div>
 
         <% @creator=User.find_by_id(ele.user_id) %>
-        <p><%= @creator.first_name %></p>
-        <p><%= ele.user_id %></p>
         <%if current_user == @creator%>
         <p class="pull-right">
             <%= link_to("Edit", edit_event_path(ele.id), class: 'btn btn-info') %>
