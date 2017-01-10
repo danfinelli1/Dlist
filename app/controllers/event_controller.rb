@@ -29,7 +29,6 @@ class EventController < ApplicationController
 
     def show
         @event = Event.find_by_id(params[:id])
-        @attending = Event.find_by_id(params[:id]).attender_id
     end
 
     def edit
