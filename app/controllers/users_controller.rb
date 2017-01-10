@@ -16,7 +16,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-    @attending = User.find(current_user).events
+    if @attending.nil?
+      @attending = @attending
+    else
+    @attending = $event.attender_id
+    @attending = @attending.push($event.attender_id)
+    end
   end
 
 
@@ -41,7 +46,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :city, :rating)
+    params.require(:user).permit(:email, :avatar, :first_name, :last_name, :password, :city, :rating)
   end
 
 end

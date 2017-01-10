@@ -3,50 +3,57 @@
     <%= @user.first_name%>!<br>
     <%= @user.first_name%>
     is attending:
-    <% @attending.each do |attending|%>
-    <br>  <%= attending.title%>
-    <%end%>
+
+    <br>
+    <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
+
+
     <br>
     <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
 
-    <% if !@user.events.empty? %>
     <p>
         Events:
     </p>
-    <% @user.events.each do |ele| %>
+    <% @event = Event.all%>
+    <% @event.each do |ele| %>
     <div class="post-row">
         <p><%= link_to ele.title,  event_path(ele.id) %><br>
             <%= ele.body %><br>
         </div>
+
+        <% @creator=User.find_by_id(ele.user_id) %>
+        <p><%= @creator.first_name %></p>
+        <p><%= ele.user_id %></p>
+        <%if current_user == @creator%>
         <p class="pull-right">
             <%= link_to("Edit", edit_event_path(ele.id), class: 'btn btn-info') %>
             <%= link_to("Delete", event_path(ele.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{ele.title}?"}, class: 'btn btn-danger') %>
         </p>
-        <% end %>
 
-        <% else %>
-          <h4>No events Yet</h4>
         <% end %>
+        <%end%>
 
-    <% if !@user.sales.empty? %>
-          <p> Posts: </p>
-          <% @user.sales.each do |sale| %>
-            <div class="post-row">
-              <p><%= link_to sale.title,  sale_path(sale.id) %><br>
-              <%= sale.body %><br>
+        <% if !@user.sales.empty? %>
+        <p>
+            Posts:
+        </p>
+        <% @user.sales.each do |sale| %>
+        <div class="post-row">
+            <p><%= link_to sale.title,  sale_path(sale.id) %><br>
+                <%= sale.body %><br>
             </div>
             <p class="pull-right">
-               <%= link_to("Edit", sale_edit_path(sale.id), class: 'btn btn-info')%>
-              <%= link_to("Delete", sale_path(sale.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger') %>
+                <%= link_to("Edit", sale_edit_path(sale.id), class: 'btn btn-info')%>
+                <%= link_to("Delete", sale_path(sale.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger') %>
             </p>
-          <% end %>
-          <% else %>
+            <% end %>
+        <% else %>
             <h4>No Posts Yet</h4>
-          <% end %>
-      <%= link_to("Delete", user_path, :method => :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: 'btn btn-danger') %>
+            <% end %>
+            <%= link_to("Delete", user_path, :method => :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: 'btn btn-danger') %>
 
-</div>
+        </div>
 
-    <% if current_user == @user%>
-    <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
-    <%end%>
+        <% if current_user == @user%>
+        <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
+        <%end%>
