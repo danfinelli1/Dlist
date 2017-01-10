@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Sale Seed
 Sale.destroy_all
 
-Sale.create({title: "Awesome Mountain Bike", body: "Slightly used Ibis SLR with costome after market everything", category: "Bikes", price: 2000, zipcode: 94577, user_id: 7})
-Sale.create({title: "2013 Macbook Ais", body: "Solid running machine. I upgraded and selling this for a great price", category: "Electronics", price: 500 , zipcode: 94113, user_id: 7})
+Sale.create({title: "Awesome Mountain Bike", body: "Slightly used Ibis SLR with custom after market everything", category: "Bikes", price: 2000, zipcode: 94577, user_id: 7})
+Sale.create({title: "2013 Macbook Air", body: "Solid running machine. I upgraded and selling this for a great price", category: "Electronics", price: 500 , zipcode: 94113, user_id: 7})
 Sale.create({title: "Game of Thrones Series", body: "After watching the tv show and having GRRM totally drop the ball on the written series, I am boycotting these books", category: "Books", price: 2, zipcode: 94114, user_id: 7})
 Sale.create({title: "2012 Jeep Wrangler", body: "Pretty much the sweetest ride anyone could ever hope for. Not create on gass milage but will go over anything you want. This is a must buy for anyone going through a quarter life crisis and wants to have some fun", category: "Cars", price: 20000, zipcode: 94137, user_id: 7})
 Sale.create({title: "Twister", body: "Great present, Great for first dates. Edges a bit stretched", category: "Games", price: 19, zipcode: 94104, user_id: 7})

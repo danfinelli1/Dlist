@@ -2,20 +2,24 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="row">
-        <div class="row">
-          <div class="col-md-5">
-            <h2><%= link_to "Create Post", new_sale_path, class: "btn btn-primary" %></h2>
-          </div>
+    <div class="col-md-2">
+      <h2><%= link_to "Create Post", new_sale_path, class: "btn btn-primary" %></h2>
+    </div>
 
-          <div class="col-md-7">
-            <% @sales.each do |sale| %>
-              <h2><%= link_to sale.title, sale_path(sale) %></h2>
-            <% end %>
+    <div class="col-md-12">
+      <% @sales.each do |sale| %>
+      <div class="col-md-4">
+        <div class="card" style="width: 30rem;">
+          <!-- Default image link for testing -->
+          <img class="card-img-top" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title"><%= sale.title %></h4>
+              <p class="card-text"><%= truncate(sale.body, length: 80) %></p>
+              <%= link_to "View", sale_path(sale), class: 'btn btn-info' %>
           </div>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

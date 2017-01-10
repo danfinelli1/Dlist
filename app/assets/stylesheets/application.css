@@ -14,3 +14,15 @@
  *= require_tree .
  *= require_self
  */
+
+ .head-nav a {
+   color: white !important;
+ }
+
+ .head-nav {
+   color: white;
+  text-align: right;
+  font-size: 25px;
+  padding-right: 10px;
+  background-color: #000;
+ }
