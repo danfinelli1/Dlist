@@ -4,6 +4,7 @@
 <br>
 <%= @event.price %><br>
 <%= @event.address %><br>
+<%= @event.zipcode %>
 <%= @event.date %><br>
 <% if @event.users.include?(current_user) %>
 <%= button_to 'Unattend', { :controller => :event, :action => :remove_attender }, method: :patch %>
@@ -20,7 +21,7 @@
 <script type="text/javascript">
     $.ajax({
         method: "GET",
-        url: "https://api.geocod.io/v1/geocode?q=<%=@event.address%>&api_key=578e555378377dc77553955d8cc9e978fdde5c5",
+        url: "https://api.geocod.io/v1/geocode?q=<%=@event.zipcode%>&api_key=578e555378377dc77553955d8cc9e978fdde5c5",
         dataType: "json",
         async: false,
         success: function (data) {
@@ -30,7 +31,7 @@
 </script>
 <script type="text/javascript">
     function initialize() {
-        var miles = 5;
+        var miles = 3;
 
         var map = new google.maps.Map(document.getElementById("map"), {
             zoom: 11,

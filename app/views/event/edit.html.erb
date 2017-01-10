@@ -7,6 +7,7 @@ Edit Events Page
 <p> Category: <%= f.text_field :category %></p>
 <p> Price: <%= f.number_field :price %></p>
 <p> Address: <%= f.text_field :address %></p>
+<p> Zipcode: <%= f.number_field :zipcode %></p>
 <p> Date: <%= f.date_field :date %></p>
 <%= f.hidden_field :user_id, :value => current_user.id%>
 <%= f.submit "Save Event" %>
