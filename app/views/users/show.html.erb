@@ -13,7 +13,7 @@
           <%@joins.each do |join| %>
           <br>
           <%@attending = Event.find_by_id(join.event_id)%>
-          
+
           Event:
           <%= @attending.title%>
           <br>
@@ -100,7 +100,7 @@
                         </div>
                         <p class="pull-right">
                             <%= link_to("Edit", sale_edit_path(sale.id), class: 'btn btn-info')%>
-                            <%= link_to("Delete", sale_path(sale.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger') %>
+                            <%= link_to("Delete", sale_path(sale.id), :method => :destroy, data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger') %>
                         </p>
                         <% end %>
                     <% else %>
