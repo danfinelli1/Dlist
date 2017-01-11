@@ -2,12 +2,20 @@
   <div class="row">
     <div class="col-md-12">
       <div class="col-md-5">
-          <h3>Welcome,
-          <%= @user.first_name%>!</h3>
-          <br>
-          <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
-          <br>
-      </div>
+<div>
+    Welcome,
+    <%= @user.first_name%>!<br>
+    <%= @user.first_name%>
+    is attending:
+    <%@joins = Jointable.where(user_id:@user.id)%>
+    <%@joins.each do |join| %>
+      <br>
+        <%=Event.find_by_id(join.event_id).title%>
+    <%end%>
+
+
+    <br>
+    <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
 
     <br>
     <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
