@@ -1,4 +1,5 @@
-<div>
+
+
     Welcome,
     <%= @user.first_name%>!<br>
     <%= @user.first_name%>
@@ -44,9 +45,7 @@
     <%end%>
     <%end%>
     <br>
-
-        <h3>Other Events:
-        </h3>
+        <p>Other Events</p>
         <% @event.each do |ele| %>
         <% @creator=User.find_by_id(ele.user_id) %>
         <%if current_user != @creator%>
