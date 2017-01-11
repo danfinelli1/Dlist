@@ -22,8 +22,15 @@
             <img class="sale-img" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" />
             <h3><strong>Asking Price:</strong> <%= number_to_currency(@sale.price) %></h3>
             <h4><%= @sale.body %></h4>
+    <% if !@sale.buyer_id %>
+    <%= button_to 'PURCHASE', sale_path(@sale), :action => :purchase, method: :post, class: "btn btn-primary" %>
+    <% elsif @sale.buyer_id == current_user.id %>
+    <%= button_to "CONFIRM", sale_path(@sale), :action => :confirm, method: :patch, class: "btn btn-danger"%>
+    <% else %>
+    <%= button_to "SOLD OUT", sale_path(@sale), method: :get, class: "btn btn-danger"%>
+    <% end %>
     </div>
-    <%= button_to 'PURCHASE', sale_path(@sale), :action => :purchase, method: :post %>
+
 
   </div>
 </div>
