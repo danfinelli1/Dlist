@@ -1,6 +1,10 @@
 class RentsController < ApplicationController
   def index
+    if params[:category]
+      @rents = Rent.where(:category => params[:category])
+    else
       @rents = Rent.all
+    end
   end
 
   def new

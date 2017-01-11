@@ -44,6 +44,15 @@ class SalesController < ApplicationController
     redirect_to user_path
   end
 
+  def purchase
+    @sale = Sale.find_by_id(params[:id])
+    @balance = current_user.balance - @sale.price
+    current_user.update({balance: @balance})
+    admin = User.find_by_email("admin@dlist.com")
+    admin.update({balance:admin.balance + @sale.price})
+    redirect_to sale_path(@sale)
+  end
+
   private
 
   def sale_params

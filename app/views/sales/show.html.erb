@@ -23,6 +23,8 @@
             <h3><strong>Asking Price:</strong> <%= number_to_currency(@sale.price) %></h3>
             <h4><%= @sale.body %></h4>
     </div>
+    <%= button_to 'PURCHASE', sale_path(@sale), :action => :purchase, method: :post %>
+
   </div>
 </div>
 <script type="text/javascript">
