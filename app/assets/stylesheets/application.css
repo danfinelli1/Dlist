@@ -33,5 +33,9 @@
  }
 
  .container {
-   margin-top: 20px;
+   margin-top: 25px;
+ }
+
+ .card-title {
+   height:30px;
  }

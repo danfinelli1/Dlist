@@ -1,4 +1,4 @@
-<h2>Welcome to new Sales page</h2>
+<h2>Welcome to edit Sales page</h2>
 
     <%= form_for :sale do |f| %>
         <fieldset class="form-group">
@@ -7,7 +7,7 @@
         </fieldset>
 
         <fieldset class="form-group">
-          <label for="email">Descpription</label>
+          <label for="name">Descpription</label>
           <%= f.text_area :body, class: "form-control", placeholder: "Descpription" %>
         </fieldset>
 
@@ -27,7 +27,7 @@
         </fieldset>
 
         <fieldset class="form-group">
-          <%= f.hidden_field :zipcode, class: "form-control", :value => current_user.id %>
+          <%= f.hidden_field :user_id, class: "form-control", :value => current_user.id %>
         </fieldset>
 
         <fieldset class="form-group">
