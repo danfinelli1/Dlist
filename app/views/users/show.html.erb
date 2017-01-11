@@ -1,55 +1,50 @@
+<div class="container">
 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-5">
+        <div>
+          Welcome,
+          <%= @user.first_name%>!<br>
+          <%= image_tag(@user.avatar.url, :class => 'profile-picture') %> <br>
+          <%= @user.first_name%>
+          is attending:
+          <%@joins = Jointable.where(user_id:@user.id)%>
+          <%@joins.each do |join| %>
+          <br>
+          <%@attending = Event.find_by_id(join.event_id)%>
+          
+          Event:
+          <%= @attending.title%>
+          <br>
+          Date:
+          <%= @attending.date%>
+          <%end%>
 
-    Welcome,
-    <%= @user.first_name%>!<br>
-    <%= @user.first_name%>
-    is attending:<br>
-    <%@joins = Jointable.where(user_id:@user.id)%>
-    <%@joins.each do |join| %>
-    <br>
-    <%@attending = Event.find_by_id(join.event_id)%>
-    Event:
-    <%= @attending.title%>
-    <br>
-    Date:
-    <%= @attending.date%>
-    <br>
-    <%end%>
+          <br>
+
+          <br>
+          <div class="col-md-7"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <br>
-    <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
+
+    <br>
 
     <br>
     <%= link_to("New Event", new_event_path, class: 'btn btn-info pull-right' ) %>
-<div class="container">
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-5">
-                <div>
-                    Welcome,
-                    <%= @user.first_name%>!<br>
-                    <%= @user.first_name%>
-                    is attending:
-                    <%@joins = Jointable.where(user_id:@user.id)%>
-                    <%@joins.each do |join| %>
-                    <br>
-                    <%=Event.find_by_id(join.event_id).title%>
-                    <%end%>
-
-                    <br>
-                    <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
-
-                    <br>
-                    <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
-                    <div class="col-md-7"></div>
-                </div>
-            </div>
-        </div>
+    <% if current_user == @user%>
+    <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
+    <%= link_to("Delete", user_path, :method => :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: 'btn btn-danger') %>
+    <%end%>
 
         <div>
 
-            <% @event = Event.all%>
+    <% @event = Event.all%>
     <h3>My Events:</h3>
     <% @event.each do |ele| %>
     <% @creator=User.find_by_id(ele.user_id) %>
@@ -90,42 +85,15 @@
         </div>
             <%end%>
             <%end%>
-            <% if !@user.sales.empty? %>
-            <p>Posts:
-            </p>
-            <% @user.sales.each do |sale| %>
-            <div class="post-row">
-                <p><%= link_to sale.title,  sale_path(sale.id) %><br>
-                    <%= sale.body %><br>
-                </div>
-                <p class="pull-right">
-                    <%= link_to("Edit", sale_edit_path(sale.id), class: 'btn btn-info')%>
-                    <%= link_to("Delete", sale_path(sale.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger') %>
-                </p>
-                <% end %>
-            <% else %>
-                <h4>No Posts Yet</h4>
-                <% end %>
-                <%= link_to("Delete", user_path, :method => :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: 'btn btn-danger') %>
 
-            </div>
 
-            <% if current_user == @user%>
-            <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
-            <%end%>
-                <p class="pull-right">
-                    <%= link_to("Edit", edit_event_path(ele.id), class: 'btn btn-info') %>
-                    <%= link_to("Delete", event_path(ele.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{ele.title}?"}, class: 'btn btn-danger') %>
-                </p>
-                <%end%>
-                <%end%>
-              
+
 <hr>
                     <% if !@user.sales.empty? %>
                     <p>
                         Posts:
                     </p>
-                    <% @user.sales.each do |sale| %>
+                        <% @user.sales.each do |sale| %>
                     <div class="post-row">
                         <p><%= link_to sale.title,  sale_path(sale.id) %><br>
                             <%= sale.body %><br>
@@ -137,8 +105,7 @@
                         <% end %>
                     <% else %>
                         <h3>No Posts Yet</h3>
-                        <% end %>
-                        <%= link_to("Delete", user_path, :method => :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: 'btn btn-danger') %>
+                    <% end %>
 
                     </div>
                     <hr>
@@ -152,7 +119,3 @@
 
                     </div>
                     <hr>
-
-                    <% if current_user == @user%>
-                    <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
-                    <%end%>
