@@ -10,32 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap-3.3.6.min.css
+ *= require bootstrap-3.3.6.min
  *= require_tree .
  *= require_self
  */
- .conversation {
-   padding: 10px;
-   border: 1px solid lightgrey;
-   border-radius: 1%;
-}
-
- .head-nav a {
-   color: white !important;
- }
-
- .head-nav {
-   color: white;
-  text-align: right;
-  font-size: 25px;
-  padding-right: 10px;
-  background-color: #000;
- }
-
- .container {
-   margin-top: 25px;
- }
-
- .card-title {
-   height:30px;
- }
