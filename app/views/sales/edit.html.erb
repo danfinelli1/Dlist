@@ -1,6 +1,6 @@
 <h2>Welcome to edit Sales page</h2>
 
-    <%= form_for :sale do |f| %>
+    <%= form_for :sale, :method => :patch do |f| %>
         <fieldset class="form-group">
           <label for="name">Title</label>
           <%= f.text_field :title, class: "form-control", placeholder: "Title" %>

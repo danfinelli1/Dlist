@@ -41,7 +41,7 @@ class SalesController < ApplicationController
   def destroy
     @sale = Sale.find_by_id(params[:id])
     Sale.destroy(@sale)
-    redirect_to user_path
+    redirect_to user_path(current_user)
   end
 
   def purchase
