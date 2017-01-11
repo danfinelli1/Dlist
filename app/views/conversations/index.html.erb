@@ -21,7 +21,7 @@
               <% if user.id != current_user.id %>
                 <div class="row">
                   <%= "#{user.first_name} #{user.last_name}"%>
-                  <%= link_to "Shot me a message!", conversations_path(sender_id: current_user.id, recipient_id: user.id), :method => :post%>
+                  <%= link_to "Shoot me a message!", conversations_path(sender_id: current_user.id, recipient_id: user.id), :method => :post%>
                 </div>
               <% end %>
             <% end %>

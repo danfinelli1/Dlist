@@ -38,6 +38,8 @@ gem 'gmaps4rails'
 
 gem 'geocodio'
 
+gem 'ratyrate'
+
 
 
 # Use Capistrano for deployment

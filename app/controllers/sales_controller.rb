@@ -14,6 +14,7 @@ class SalesController < ApplicationController
 
   def show
     @sale = Sale.find_by_id(params[:id])
+    @user = User.find(Sale.find(params[:id]).user_id)
   end
 
   def new

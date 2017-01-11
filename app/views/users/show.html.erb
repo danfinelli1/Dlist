@@ -16,7 +16,7 @@
       <div class="col-md-9">
 
         <% if !@user.sales.empty? %>
-        <h3>Active Items on Sale:</h3>
+        <h3 >Active Items on Sale:</h3>
         <% @user.sales.each do |sale| %>
           <div class="post">
             <h4><%= link_to sale.title,  sale_path(sale.id) %></h4>

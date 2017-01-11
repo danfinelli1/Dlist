@@ -16,12 +16,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-    if @attending.nil?
-      @attending = @attending
-    else
-    @attending = $event.attender_id
-    @attending = @attending.push($event.attender_id)
-    end
   end
 
 
