@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-5">
 <div>
     Welcome,
     <%= @user.first_name%>!<br>
@@ -15,22 +19,30 @@
 
     <br>
     <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
+      <div class="col-md-7">
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
     <p>
         Events:
     </p>
 
     <% @event = Event.all%>
 
+
       <p>My Events</p>
     <% @event.each do |ele| %>
         <% @creator=User.find_by_id(ele.user_id) %>
-
         <%if current_user == @creator%>
         <p><%= link_to ele.title,  event_path(ele.id) %><br>
           <%= ele.body %><br>
         <p><%= @creator.first_name %></p>
         <p><%= ele.user_id %></p>
+
         <p class="pull-right">
             <%= link_to("Edit", edit_event_path(ele.id), class: 'btn btn-info') %>
             <%= link_to("Delete", event_path(ele.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{ele.title}?"}, class: 'btn btn-danger') %>
