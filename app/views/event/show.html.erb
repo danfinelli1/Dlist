@@ -1,44 +1,46 @@
-<%= @event %>
 <%= @event.title %>
+<br>
 <%= @event.category %>
-<%= @event.price %>
-<%= @event.address %>
-<%= @event.date %>
+<br>
+<%= @event.price %><br>
+<%= @event.address %><br>
+<%= @event.zipcode %>
+<%= @event.date %><br>
 <% if @event.users.include?(current_user) %>
 <%= button_to 'Unattend', { :controller => :event, :action => :remove_attender }, method: :patch %>
 <% else %>
 <%= button_to 'Attend', { :controller => :event, :action => :add_attender } %>
 <% end %>
 <div style='width: 800px;'>
-<div id="map" style='width: 800px; height: 400px;'></div>
+    <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 <script type="text/javascript">
-handler = Gmaps.build('Google');
-var places = [];
+    handler = Gmaps.build('Google');
+    var places = [];
 </script>
 <script type="text/javascript">
-$.ajax({
-    method: "GET",
-    url: "https://api.geocod.io/v1/geocode?q=<%=@event.address%>&api_key=578e555378377dc77553955d8cc9e978fdde5c5",
-    dataType: "json",
-    async: false,
-    success: function (data) {
-        places.push({"lat": data.results[0].location.lat, "lng": data.results[0].location.lng, "infowindow": "it works"});
-    }
-});
+    $.ajax({
+        method: "GET",
+        url: "https://api.geocod.io/v1/geocode?q=<%=@event.zipcode%>&api_key=578e555378377dc77553955d8cc9e978fdde5c5",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            places.push({"lat": data.results[0].location.lat, "lng": data.results[0].location.lng, "infowindow": "it works"});
+        }
+    });
 </script>
 <script type="text/javascript">
-function initialize() {
-        var miles = 5;
+    function initialize() {
+        var miles = 3;
 
         var map = new google.maps.Map(document.getElementById("map"), {
             zoom: 11,
-            center: new google.maps.LatLng(places[0].lat,places[0].lng),
+            center: new google.maps.LatLng(places[0].lat, places[0].lng),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
         var circle = new google.maps.Circle({
-            center: new google.maps.LatLng(places[0].lat,places[0].lng),
+            center: new google.maps.LatLng(places[0].lat, places[0].lng),
             radius: miles * 1609.344,
             fillColor: "#ff69b4",
             fillOpacity: 0.5,

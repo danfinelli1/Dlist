@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  post '/rate' => 'rater#create', :as => 'rate'
   get 'messages/index'
 
   get 'messages/new'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   patch '/users/:id', to: 'users#update'
   delete '/users/:id', to: 'users#destroy'
 
+  #Event routes
   get '/events', to: 'event#index', as: 'all_events'
   get '/events/new', to: 'event#new', as: 'new_event'
   get '/events/:id', to: 'event#show', as: 'event'

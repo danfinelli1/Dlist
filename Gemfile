@@ -38,7 +38,6 @@ gem 'gmaps4rails'
 
 gem 'geocodio'
 
-# Add rating system
 gem 'ratyrate'
 
 
