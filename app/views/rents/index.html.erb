@@ -1,19 +1,38 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="row">
-        <div class="row">
-          <div class="col-md-5">
-            <h2><%= link_to "Create Rent Post", new_rent_path, class: "btn btn-primary" %></h2>
-          </div>
+<h2><%= link_to "Create Rent Post", new_rent_path, class: "btn btn-success create-post" %></h2>
+<br/>
+<h3>Filters</h3>
 
-          <div class="col-md-7">
-            <% @rents.each do |rent| %>
-              <h2><%= link_to rent.title, rent_path(rent) %></h2>
-            <% end %>
-          </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6 filters">
+
+                <%= link_to "Apartment", all_rents_path(:category=>"Apartment"), class: "btn btn-primary" %>
+                <%= link_to "House", all_rents_path(:category=>"House"), class: "btn btn-primary" %>
+                <%= link_to "Other", all_rents_path(:category=>"Other"), class: "btn btn-primary" %>
+                <%= link_to "Undo Filter", all_rents_path, class: "btn btn-default" %>
+            </div>
         </div>
-      </div>
+        <br/>
+        <!-- Card Show -->
+        <div class="row">
+            <div class="col-md-12">
+                <% @rents.each do |rent| %>
+                <div class="col-xs-6 col-md-4">
+                    <div class="card" style="width: 30rem;">
+                        <img class="card-img-top" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title"><%= rent.title %></h4>
+                            <p class="card-text"><strong><%= rent.bed %></strong> Bed/<strong><%=rent.bath%></strong> Bath</p>
+                            <p class="card-text"><%= truncate(rent.body, length: 80) %></p>
+                            <%= link_to "View", rent_path(rent), class: 'btn btn-info' %>
+                            <h3 class="price"><%= number_to_currency(rent.price) %></h3>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
     </div>
-  </div>
+
 </div>
