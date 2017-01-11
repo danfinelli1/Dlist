@@ -2,7 +2,6 @@ class User < ApplicationRecord
 
   validates :first_name, :email,  presence: true
   validates :email, uniqueness: true
-  validates :password, length: { minimum: 3 }
 
   has_secure_password
   has_many :conversations, :foreign_key => :sender_id
