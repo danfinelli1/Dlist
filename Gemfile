@@ -40,6 +40,7 @@ gem 'geocodio'
 
 gem 'ratyrate'
 
+gem 'rspec-rails'
 
 
 # Use Capistrano for deployment
