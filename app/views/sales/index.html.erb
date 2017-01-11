@@ -1,0 +1,49 @@
+
+  <h2><%= link_to "Create Post", new_sale_path, class: "btn btn-success create-post" %></h2>
+  <br />
+  <h3>Filters</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="col-md-6 filters">
+          <!-- Category filters -->
+        <%= link_to "Electronics", sales_path(:category=>"Electronics"), class: "btn btn-primary" %>
+        <%= link_to "Bikes", sales_path(:category=>"Bikes"), class: "btn btn-primary" %>
+        <%= link_to "Books", sales_path(:category=>"Books"), class: "btn btn-primary" %>
+        <%= link_to "Cars", sales_path(:category=>"Cars"), class: "btn btn-primary" %>
+        <%= link_to "Games", sales_path(:category=>"Games"), class: "btn btn-primary" %>
+        <%= link_to "Other", sales_path(:category=>"Other"), class: "btn btn-primary" %>
+      <br />
+        <!-- Price Filters -->
+        <%= link_to "$50", sales_path(:price=>"50"), class: "btn btn-primary" %>
+        <%= link_to "$100", sales_path(:price=>"100"), class: "btn btn-primary" %>
+        <%= link_to "$200", sales_path(:price=>"200"), class: "btn btn-primary" %>
+        <%= link_to "$500", sales_path(:price=>"500"), class: "btn btn-primary" %>
+        <%= link_to "$1000", sales_path(:price=>"1000"), class: "btn btn-primary" %>
+        <%= link_to "Undo Filter", sales_path, class: "btn btn-default" %>
+    </div>
+  </div>
+    <br />
+    <!-- Card Show -->
+  <div class="row">
+    <div class="col-md-12">
+      <% @sales.each do |sale| %>
+      <div class="col-xs-6 col-md-4">
+        <div class="card" style="width: 30rem;">
+          <!-- Default image link for testing -->
+          <img class="card-img-top" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title"><%= sale.title %></h4>
+              <p class="card-text"><%= truncate(sale.body, length: 80) %></p>
+              <%= link_to "View", sale_path(sale), class: 'btn btn-info' %>
+              <h3 class="price"><%= number_to_currency(sale.price) %></h3>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

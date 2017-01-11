@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <!-- Category filters -->
+      <%= link_to "Back", all_rents_path, class: "btn btn-primary" %>
+      <!-- Need to change once messaging is implemented -->
+      <%= link_to "Contact landlord", all_rents_path, class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <div class="row sale-body">
+    <div class="col-md-12">
+      <h1><strong><%= @rent.title %></strong> - <em>  Location: (<%= @rent.address %>)</em></h1>
+            <!-- NOTE: Add loop to generate all images associated with the post -->
+            <img class="sale-img" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" />
+            <img class="sale-img" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" />
+            <img class="sale-img" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" />
+            <img class="sale-img" src="http://www.lily-bearing.com/wp-content/themes/theme/front/dist/images/default.png" />
+            <h3><strong>Asking Price:</strong> <%= number_to_currency(@rent.price) %></h3>
+            <h4><%= @rent.body %></h4>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    //Check if the current URL contains '#'
+    if(document.URL.indexOf("#")==-1){
+        // Set the URL to whatever it was plus "#".
+        url = document.URL+"#";
+        location = "#";
+
+        //Reload the page
+        location.reload(true);
+    }
+});
+</script>
