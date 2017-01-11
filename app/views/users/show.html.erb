@@ -3,6 +3,12 @@
     <%= @user.first_name%>!<br>
     <%= @user.first_name%>
     is attending:
+    <%@joins = Jointable.where(user_id:@user.id)%>
+    <%@joins.each do |join| %>
+      <br>
+        <%=Event.find_by_id(join.event_id).title%>
+    <%end%>
+
 
     <br>
     <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
