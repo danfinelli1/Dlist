@@ -44,6 +44,27 @@ class SalesController < ApplicationController
     redirect_to user_path
   end
 
+  def purchase
+    @sale = Sale.find_by_id(params[:id])
+    @sale.update({buyer_id:current_user.id})
+    @balance = current_user.balance - @sale.price
+    current_user.update({balance: @balance})
+    admin = User.find_by_email("admin@dlist.com")
+    admin.update({balance:admin.balance + @sale.price})
+    redirect_to sale_path(@sale)
+  end
+
+  def confirm
+    @sale = Sale.find_by_id(params[:id])
+    @seller = User.find_by_id(@sale.user_id)
+    admin = User.find_by_email("admin@dlist.com")
+    value = 0.95*(@sale.price)
+    admin.update({balance:admin.balance - value})
+    @seller.update({balance: @seller.balance + value})
+    Sale.destroy(@sale)
+    redirect_to current_user
+  end
+
   private
 
   def sale_params

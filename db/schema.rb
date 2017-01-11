@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110230209) do
+ActiveRecord::Schema.define(version: 20170111102605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20170110230209) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "buyer_id"
     t.index ["user_id"], name: "index_sales_on_user_id", using: :btree
   end
 
@@ -129,13 +130,14 @@ ActiveRecord::Schema.define(version: 20170110230209) do
     t.string   "password_digest"
     t.float    "rating"
     t.string   "city"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.float    "balance"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "is_admin",            default: false
+    t.float    "balance",             default: 1000.0
   end
 
   add_foreign_key "events", "users"
