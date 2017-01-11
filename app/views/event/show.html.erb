@@ -51,8 +51,16 @@
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-Attending:
-<% @event.users.distinct.each do |attender| %>
-<%= attender.first_name %>
-<%= attender.last_name %>
-<% end %>
+<script type="text/javascript">
+$(document).ready(function(){
+    //Check if the current URL contains '#'
+    if(document.URL.indexOf("#")==-1){
+        // Set the URL to whatever it was plus "#".
+        url = document.URL+"#";
+        location = "#";
+
+        //Reload the page
+        location.reload(true);
+    }
+});
+</script>
