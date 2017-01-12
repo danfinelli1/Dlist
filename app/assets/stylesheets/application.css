@@ -39,3 +39,16 @@
 .card-title {
   height:30px;
 }
+.mb-3 {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.image {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  height: 250px;
+  text-align: center;
+}

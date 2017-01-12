@@ -2,7 +2,9 @@
 <% @events.each do |ele| %>
 <% @creator=User.find_by_id(ele.user_id) %>
 <div class="card mb-3">
-    <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="image">
+    <img class="image" src="https://tbdbitl.osu.edu/sites/tbdbitl.osu.edu/files/styles/slider_full_width/public/2012%20Miami%20-%201269-rotor.jpg?itok=bU4bTfm7" alt="Card image cap">
+  </div>
     <div class="card-block">
         <h4 class="card-title"><%= link_to ele.title,  event_path(ele.id) %></h4>
         <p class="card-text"><%= ele.body %></p>
