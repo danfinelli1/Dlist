@@ -1,6 +1,8 @@
 <h2>Welcome to new Rent page</h2>
 
-<%= form_for :rent, url: create_rent_path, :html => {:multipart => true}  do |f| %>
+
+<%= form_for @rent, url: create_rent_path, :html => {:multipart => true} do |f| %>
+
     <fieldset class="form-group">
       <label for="name">Title</label>
       <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
@@ -29,6 +31,17 @@
       <label for="name">Bathroom</label>
       <%= f.number_field :bath, class: "form-control", placeholder: "Bathroom" %>
     </fieldset>
+    <%= f.fields_for :images do |builder| %>
+      <p>
+        <%= builder.label :caption, "Image Caption" %>
+        <%= builder.text_field :caption %>
+      </p>
+      <p>
+        <%= builder.label :photo, "Image File" %>
+        <%= builder.file_field :photo %>
+      </p>
+    <% end %>
+
     <fieldset class="form-group">
       <label for="name">Address</label>
       <%= f.number_field :address, class: "form-control", placeholder: "Address" %>

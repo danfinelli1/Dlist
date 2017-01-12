@@ -9,6 +9,8 @@ class RentsController < ApplicationController
 
   def new
       @rent = Rent.new
+      @image = Image.new
+      2.times {@rent.images.build}
   end
 
   def create
@@ -43,11 +45,13 @@ class RentsController < ApplicationController
       redirect_to user_path(current_user)
   end
 
+  def contact
+
+  end
+
   private
 
   def rent_params
-      params.require(:rent).permit(:title, :body, :category, :price, :address, :sqfootage, :bed, :bath, :user_id, :zipcode)
+      params.require(:rent).permit(:title, :body, :category, :price, :address, :sqfootage, :bed, :bath, :user_id, :images_attributes=>[:caption, :photo])
   end
-
-
 end

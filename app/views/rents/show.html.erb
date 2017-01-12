@@ -4,7 +4,8 @@
         <!-- Category filters -->
       <%= link_to "Back", all_rents_path, class: "btn btn-primary" %>
       <!-- Need to change once messaging is implemented -->
-      <%= link_to "Contact landlord", all_rents_path, class: "btn btn-success" %>
+      <%= link_to "Contact landlord",conversations_path(sender_id: current_user.id, recipient_id: Rent.find_by_id(params[:id]).user_id), :method => :post, class: "btn btn-success" %>
+
     </div>
   </div>
   <div style='width: 800px;'>
