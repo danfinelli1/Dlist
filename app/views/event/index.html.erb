@@ -1,14 +1,20 @@
-Events Index <br>
-<% @events.each do |event|%>
-<%= event.id %><br>
-<%= event.title %><br>
-<%= event.category %><br>
-<%= event.price %><br>
-<%= event.address %><br>
-<%= event.zipcode %><br>
-<%= event.date %><br>
-<% @creator=User.find_by_id(event.user_id) %>
-Created By: <br>
-<%=@creator.first_name%>
-<%=@creator.last_name%>
-<% end %>
+<h3>All Events </h3>
+<% @events.each do |ele| %>
+<% @creator=User.find_by_id(ele.user_id) %>
+<div class="card mb-3">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+        <h4 class="card-title"><%= link_to ele.title,  event_path(ele.id) %></h4>
+        <p class="card-text"><%= ele.body %></p>
+
+        <p class="card-text">
+            <small class="text-muted">Date: <%= ele.date %></small>
+            <div class="pull-right">Created By:
+                <%= @creator.first_name %>
+                <%= @creator.last_name %>  <br>
+            </div>
+        </p>
+        <br><br>
+    </div>
+</div>
+    <%end%>

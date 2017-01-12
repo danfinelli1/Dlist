@@ -28,6 +28,7 @@ class EventController < ApplicationController
 
     def show
         @event = Event.find_by_id(params[:id])
+        @creator=User.find_by_id(@event.user_id)
     end
 
     def edit

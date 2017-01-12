@@ -1,20 +1,31 @@
-<h3>Title: </h3> <%= @event.title %><br>
-<h3>Category: </h3><%= @event.category %><br>
-<h3>Price: </h3><%= @event.price %><br>
-<h3>Address: </h3><%= @event.address %><br>
-<h3>Zipcode: </h3><%= @event.zipcode %> <br>
-<h3>Date: </h3><%= @event.date %><br>
-<% if @event.users.include?(current_user) %>
-<%= button_to 'Unattend', { :controller => :event, :action => :remove_attender }, method: :patch %>
-<% else %>
-<%= button_to 'Attend', { :controller => :event, :action => :add_attender } %>
-<% end %>
 
-
-
-
-<div style='width: 800px;'>
-    <div id="map" style='width: 800px; height: 400px;'></div>
+<div class="card mb-3">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+        <h4 class="card-title"><%=@event.title%></h4>
+        <p class="card-text"><strong>Description: </strong><%= @event.body %></p>
+        <p class="card-text"><strong>Category: </strong><%= @event.category %></p>
+        <p class="card-text"><strong>Price: </strong><%= @event.price %></p>
+        <p class="card-text"><strong>Address: </strong><%= @event.address %></p>
+        <p class="card-text">
+            <small class="text-muted">Date: <%= @event.date %></small>
+            <div class="pull-right">
+            <% if @event.users.include?(current_user) %>
+            <%= button_to 'Unattend', { :controller => :event, :action => :remove_attender }, method: :patch %>
+            <% else %>
+            <%= button_to 'Attend', { :controller => :event, :action => :add_attender } %>
+            <% end %><br>
+            Created By:
+                <%= @creator.first_name %>
+                <%= @creator.last_name %>  <br>
+            </div>
+        </p>
+        <br><br><br><br>
+    </div>
+</div>
+<br>
+<div style='width: auto;'>
+    <div id="map" style='width: auto; height: 400px;'></div>
 </div>
 <script type="text/javascript">
 

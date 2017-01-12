@@ -44,7 +44,6 @@
 
         <div>
 
-    <% @event = Event.all%>
     <h3>My Events:</h3>
     <% @event.each do |ele| %>
     <% @creator=User.find_by_id(ele.user_id) %>
@@ -66,27 +65,7 @@
     <%end%>
     <%end%>
     <br>
-        <h3>Other Events</h3>
-        <% @event.each do |ele| %>
-        <% @creator=User.find_by_id(ele.user_id) %>
-        <%if current_user != @creator%>
-        <div class="card mb-3">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-block">
-                <h4 class="card-title"><%= link_to ele.title,  event_path(ele.id) %></h4>
-                <p class="card-text"><%= ele.body %></p>
 
-                <p class="card-text">
-                    <small class="text-muted">Date: <%= ele.date %></small>
-                    <div class="pull-right">Created By:
-                        <%= @creator.first_name %>    </div>  <br>
-                </p>
-            </div>
-        </div>
-            <%end%>
-            <%end%>
-
-<hr>
                     <% if !@user.sales.empty? %>
                     <p>
                         Posts:
