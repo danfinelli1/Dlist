@@ -6,7 +6,7 @@
         <!-- Category filters -->
       <%= link_to "Back", sales_path, class: "btn btn-primary" %>
       <!-- Need to change once messaging is implemented -->
-      <%= link_to "Contact Seller", sales_path, class: "btn btn-success" %>
+      <%= link_to "Contact Seller",conversations_path(sender_id: current_user.id, recipient_id: Sale.find_by_id(params[:id]).user_id), :method => :post, class: "btn btn-success" %>
     </div>
   </div>
   Rate the seller:
