@@ -59,6 +59,9 @@ Rails.application.routes.draw do
   post '/rents', to: 'rents#create', as: 'create_rent'
   delete '/rents/:id', to: 'rents#destroy'
 
+  post '/rents/new', to: 'rents#new'
+
+
   #Mailbox Routes
   resources :conversations do
     resources :messages

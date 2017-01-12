@@ -15,8 +15,28 @@
                     <%=Event.find_by_id(join.event_id).title%>
                     <%end%>
 
-                    <br>
-                    <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-5">
+        <div>
+          Welcome,
+          <%= @user.first_name%>!<br>
+          <%= image_tag(@user.avatar.url, :class => 'profile-picture') %> <br>
+          <%= @user.first_name%>
+          is attending:
+          <%@joins = Jointable.where(user_id:@user.id)%>
+          <%@joins.each do |join| %>
+          <br>
+          <%@attending = Event.find_by_id(join.event_id)%>
+
+          Event:
+          <%= @attending.title%>
+          <br>
+          Date:
+          <%= @attending.date%>
+          <%end%>
+
 
 
                     <br>
@@ -35,34 +55,31 @@
                 Events:
             </p>
 
-            <% @event = Event.all%>
+        </div>
+    </div>
+    <%end%>
+    <%end%>
+    <br>
+        <h3>Other Events</h3>
+        <% @event.each do |ele| %>
+        <% @creator=User.find_by_id(ele.user_id) %>
+        <%if current_user != @creator%>
+        <div class="card mb-3">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title"><%= link_to ele.title,  event_path(ele.id) %></h4>
+                <p class="card-text"><%= ele.body %></p>
 
-            <h3>My Events</h3>
-            <% @event.each do |ele| %>
-            <% @creator=User.find_by_id(ele.user_id) %>
-            <%if current_user == @creator%>
-            <p><%= link_to ele.title,  event_path(ele.id) %><br>
-                <%= ele.body %><br>
-                <p><%= @creator.first_name %></p>
-                <p><%= ele.user_id %></p>
-
-                <p class="pull-right">
-                    <%= link_to("Edit", edit_event_path(ele.id), class: 'btn btn-info') %>
-                    <%= link_to("Delete", event_path(ele.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{ele.title}?"}, class: 'btn btn-danger') %>
+                <p class="card-text">
+                    <small class="text-muted">Date: <%= ele.date %></small>
+                    <div class="pull-right">Created By:
+                        <%= @creator.first_name %>    </div>  <br>
                 </p>
-                <%end%>
-                <%end%>
-                <hr>
-                <h3>Other Events</h3>
-                <% @event.each do |ele| %>
-                <% @creator=User.find_by_id(ele.user_id) %>
-                <%if current_user != @creator%>
-                <h4><%= link_to ele.title,  event_path(ele.id) %></h4>
-                    <strong><%= ele.body %></strong><br>
-                    Host by: <i><%= @creator.first_name %></i>
-                    <br>
-                    <%end%>
-                    <%end%>
+            </div>
+        </div>
+            <%end%>
+            <%end%>
+
 <hr>
                     <% if !@user.sales.empty? %>
                     <p>
@@ -75,7 +92,7 @@
                         </div>
                         <p class="pull-right">
                             <%= link_to("Edit", sale_edit_path(sale.id), class: 'btn btn-info')%>
-                            <%= link_to("Delete", sale_path(sale.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger') %>
+                            <%= link_to("Delete", sale_path(sale.id), :method => :delete , data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger') %>
                         </p>
                         <% end %>
                     <% else %>

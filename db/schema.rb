@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170112075006) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +40,11 @@ ActiveRecord::Schema.define(version: 20170112075006) do
     t.decimal  "price"
     t.string   "address"
     t.string   "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "user_id"
     t.integer  "zipcode"
+    t.string   "images",     default: [],              array: true
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
@@ -117,8 +120,10 @@ ActiveRecord::Schema.define(version: 20170112075006) do
     t.integer  "bed"
     t.integer  "bath"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "images",     default: [],              array: true
+    t.integer  "zipcode"
     t.index ["user_id"], name: "index_rents_on_user_id", using: :btree
   end
 
@@ -129,9 +134,10 @@ ActiveRecord::Schema.define(version: 20170112075006) do
     t.decimal  "price"
     t.integer  "zipcode"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "buyer_id"
+    t.string   "images",     default: [],              array: true
     t.index ["user_id"], name: "index_sales_on_user_id", using: :btree
   end
 

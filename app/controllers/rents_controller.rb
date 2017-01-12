@@ -54,6 +54,4 @@ class RentsController < ApplicationController
   def rent_params
       params.require(:rent).permit(:title, :body, :category, :price, :address, :sqfootage, :bed, :bath, :user_id, :images_attributes=>[:caption, :photo])
   end
-
-
 end
