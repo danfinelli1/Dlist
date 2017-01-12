@@ -1,6 +1,6 @@
 <h2>Welcome to new Rent page</h2>
 
-<%= form_for :rent, :method => :post, :remote => true, :html => {:multipart => true}  do |f| %>
+<%= form_for :rent, url: create_rent_path, :html => {:multipart => true}  do |f| %>
     <fieldset class="form-group">
       <label for="name">Title</label>
       <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
@@ -29,13 +29,21 @@
       <label for="name">Bathroom</label>
       <%= f.number_field :bath, class: "form-control", placeholder: "Bathroom" %>
     </fieldset>
+    <fieldset class="form-group">
+      <label for="name">Address</label>
+      <%= f.number_field :address, class: "form-control", placeholder: "Address" %>
+    </fieldset>
 
+    <fieldset class="form-group">
+      <label for="name">Zipcode</label>
+      <%= f.number_field :zipcode, class: "form-control", placeholder: "Zipcode" %>
+    </fieldset>
 
     <fieldset class="form-group">
       <%= f.hidden_field :user_id, class: "form-control", :value => current_user.id %>
     </fieldset>
     <fieldset class="form-group">
       <%= f.submit "Save", class: "btn btn-primary" %>
-      <%= link_to "Cancel", user_path(current_user), class: "btn btn-primary" %>
+      <%= link_to "Cancel", all_rents_path, class: "btn btn-primary" %>
     </fieldset>
 <% end %>
