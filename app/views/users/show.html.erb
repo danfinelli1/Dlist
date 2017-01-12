@@ -8,6 +8,8 @@
           <%= @user.first_name%>!<br>
           <%= image_tag(@user.avatar.url, :class => 'profile-picture') %> <br>
           <%= @user.first_name%>
+          Rate the seller:
+          <%= rating_for @user, 'rating', star: @user.rating %>
           is attending:
           <%@joins = Jointable.where(user_id:@user.id)%>
           <%@joins.each do |join| %>
