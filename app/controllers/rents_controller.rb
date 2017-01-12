@@ -9,7 +9,8 @@ class RentsController < ApplicationController
 
   def new
       @rent = Rent.new
-      4.times {@rent.images.build}
+      @image = Image.new
+      2.times {@rent.images.build}
   end
 
   def create
@@ -47,7 +48,7 @@ class RentsController < ApplicationController
   private
 
   def rent_params
-      params.require(:rent).permit(:title, :body, :category, :price, :address, :sqfootage, :bed, :bath, :user_id,:images_attributes=>[:photo])
+      params.require(:rent).permit(:title, :body, :category, :price, :address, :sqfootage, :bed, :bath, :user_id, :images_attributes=>[:caption, :photo])
   end
 
 
