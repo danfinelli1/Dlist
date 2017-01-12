@@ -6,6 +6,7 @@ class CreateSales < ActiveRecord::Migration[5.0]
       t.string :category
       t.decimal :price
       t.integer :zipcode
+      t.integer :buyer_id
       t.belongs_to :user
 
       t.timestamps

@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :password_digest
       t.float :rating
       t.string :city
+      t.boolean :is_admin, default: false
+      t.float :balance, default: 1000.0
 
       t.timestamps
     end
