@@ -9,11 +9,16 @@ class RentsController < ApplicationController
 
   def new
       @rent = Rent.new
+      4.times {@rent.images.build}
   end
 
   def create
       @rent = Rent.create(rent_params)
-      redirect_to user_path(current_user)
+      if @rent.save
+        redirect_to @rent
+      else
+        render :action => 'new'
+      end
   end
 
   def show
@@ -42,7 +47,7 @@ class RentsController < ApplicationController
   private
 
   def rent_params
-      params.require(:rent).permit(:title, :body, :category, :price, :address, :sqfootage, :bed, :bath, :user_id)
+      params.require(:rent).permit(:title, :body, :category, :price, :address, :sqfootage, :bed, :bath, :user_id,:images_attributes=>[:photo])
   end
 
 
