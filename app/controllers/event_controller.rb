@@ -1,6 +1,14 @@
 class EventController < ApplicationController
     def index
+      if params[:category]
+        @events = Event.where(:category => params[:category])
+      else
         @events = Event.all
+      end
+
+      if params[:price]
+        @events = Event.where('price < ?', params[:price])
+      end
     end
 
     def add_attender
