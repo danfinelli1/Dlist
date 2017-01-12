@@ -3,8 +3,10 @@
         <div class="col-md-12">
             <div class="col-md-5">
                 <div>
+                    <%if current_user.id == params[:id]%>
                     Welcome,
                     <%= @user.first_name%>!<br>
+                    <% end %>
                     <%= @user.first_name%>
                     is attending:
                     <%@joins = Jointable.where(user_id:@user.id)%>
@@ -16,8 +18,13 @@
                     <br>
                     <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
 
+
                     <br>
+                    <%if current_user.id == params[:id]%>
                     <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
+                    <%else%>
+                    <%= link_to "Contact #{User.find_by_id(params[:id]).first_name}",conversations_path(sender_id: current_user.id, recipient_id: params[:id]), :method => :post, class: "btn btn-success" %>
+                    <%end%>
                     <div class="col-md-7"></div>
                 </div>
             </div>

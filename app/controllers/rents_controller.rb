@@ -45,6 +45,10 @@ class RentsController < ApplicationController
       redirect_to user_path(current_user)
   end
 
+  def contact
+
+  end
+
   private
 
   def rent_params
