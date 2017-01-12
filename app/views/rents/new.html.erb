@@ -1,6 +1,6 @@
 <h2>Welcome to new Rent page</h2>
 
-<%= form_for :rent, :method => :put do |f| %>
+<%= form_for :rent, :method => :post, :remote => true, :html => {:multipart => true}  do |f| %>
     <fieldset class="form-group">
       <label for="name">Title</label>
       <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
@@ -29,6 +29,8 @@
       <label for="name">Bathroom</label>
       <%= f.number_field :bath, class: "form-control", placeholder: "Bathroom" %>
     </fieldset>
+
+
     <fieldset class="form-group">
       <%= f.hidden_field :user_id, class: "form-control", :value => current_user.id %>
     </fieldset>

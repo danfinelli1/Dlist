@@ -66,7 +66,7 @@
     <%end%>
     <%end%>
     <br>
-        <p>Other Events</p>
+        <h3>Other Events</h3>
         <% @event.each do |ele| %>
         <% @creator=User.find_by_id(ele.user_id) %>
         <%if current_user != @creator%>
@@ -85,8 +85,6 @@
         </div>
             <%end%>
             <%end%>
-
-
 
 <hr>
                     <% if !@user.sales.empty? %>
