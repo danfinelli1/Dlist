@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
     @orders = Sale.where({:buyer_id => current_user.id})
-    @event = Event.all
+    @events = Event.all
+    @my_events = Event.where(user_id:current_user.id)
   end
 
 

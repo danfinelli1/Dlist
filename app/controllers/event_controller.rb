@@ -12,8 +12,7 @@ class EventController < ApplicationController
 
     def add_attender
         @event = Event.find_by_id(params[:id])
-        @attending = @event.users
-        @attending << current_user
+        @event.users << current_user
         redirect_to event_path(@event)
     end
 
@@ -37,6 +36,7 @@ class EventController < ApplicationController
         @event = Event.find_by_id(params[:id])
         @creator=User.find_by_id(@event.user_id)
         @picture = Picture.where(event_id:@event.id)
+        
     end
 
     def edit
