@@ -77,7 +77,7 @@ Date:
 <% @creator=User.find_by_id(ele.user_id) %>
 <%if current_user == @creator%>
 <div class="card mb-3">
-    <img class="image" src=@picture.url alt="Card image cap">
+    <%=image_tag(@picture.url)%>
     <div class="card-block">
         <h4 class="card-title"><%= link_to ele.title,  event_path(ele.id) %></h4>
         <p class="card-text"><%= ele.body %></p>
