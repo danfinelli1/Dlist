@@ -14,7 +14,7 @@
 <% @creator=User.find_by_id(ele.user_id) %>
 <div class="card mb-3">
   <div class="image">
-    <img class="image" src="https://tbdbitl.osu.edu/sites/tbdbitl.osu.edu/files/styles/slider_full_width/public/2012%20Miami%20-%201269-rotor.jpg?itok=bU4bTfm7" alt="Card image cap">
+    <%= image_tag @picture.url%>
   </div>
     <div class="card-block">
         <h4 class="card-title"><%= link_to ele.title,  event_path(ele.id) %></h4>

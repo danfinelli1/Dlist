@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112193305) do
+ActiveRecord::Schema.define(version: 20170113001122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,18 @@ ActiveRecord::Schema.define(version: 20170112193305) do
     t.float    "overall_avg",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "event_id"
+    t.integer  "rent_id"
+    t.integer  "sale_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_pictures_on_event_id", using: :btree
+    t.index ["rent_id"], name: "index_pictures_on_rent_id", using: :btree
+    t.index ["sale_id"], name: "index_pictures_on_sale_id", using: :btree
   end
 
   create_table "rates", force: :cascade do |t|
