@@ -25,6 +25,8 @@
             |
             <%= link_to "Mailbox", conversations_path %>
             |
+            <%= link_to "Contact Us", conversations_path(sender_id: current_user.id, recipient_id: User.find_by_email("admin@dlist.com").id), :method => :post%>
+            |
             <%= link_to "Profile", user_path(current_user) %>
             |
             <%= link_to "Log Out", logout_path %>
@@ -56,4 +58,5 @@
         </div>
 
     </body>
+
 </html>

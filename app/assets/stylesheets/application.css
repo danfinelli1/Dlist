@@ -14,6 +14,11 @@
  *= require_tree .
  *= require_self
  */
+ body {
+   background-color: #f3f3f3;
+   height: 95%;
+
+ }
  .conversation {
   padding: 10px;
   border: 1px solid lightgrey;
@@ -21,21 +26,47 @@
 }
 
 .head-nav a {
-  color: white !important;
+  color: white;
 }
 
 .head-nav {
-  color: white;
- text-align: right;
- font-size: 25px;
- padding-right: 10px;
- background-color: #000;
+  padding-top: 5px;
+  color: grey;
+  text-align: right;
+  font-size: 26px;
+  padding-right: 10px;
+  height: 50px;
+  background-color: black;
 }
 
-.container {
-  margin-top: 25px;
+
+/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+
+
+/* Customize the text color and shadow color and to optimize text legibility. */
+.welcome {
+  margin-top: 20px;
+  background: url("http://i.imgur.com/4R8gUP0.jpg");
+  background-position: center;
+  height: 630px;
+  width: 100%;
 }
+.tagline {
+    padding-top: 200px;
+    font-size: 60px;
+    color: black;
+}
+
+.sub {
+  font-size: 25px;
+  padding-left: 50px;
+}
+
 
 .card-title {
   height:30px;
+}
+.mb-3 {
+  padding-left: 10px;
+  padding-right: 10px;
 }
