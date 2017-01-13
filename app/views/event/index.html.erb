@@ -1,14 +1,33 @@
-Events Index <br>
-<% @events.each do |event|%>
-<%= event.id %><br>
-<%= event.title %><br>
-<%= event.category %><br>
-<%= event.price %><br>
-<%= event.address %><br>
-<%= event.zipcode %><br>
-<%= event.date %><br>
-<% @creator=User.find_by_id(event.user_id) %>
-Created By: <br>
-<%=@creator.first_name%>
-<%=@creator.last_name%>
-<% end %>
+<h3>All Events </h3>
+<%= link_to "Political", all_events_path(:category=>"Political"), class: "btn btn-primary" %>
+<%= link_to "Education", all_events_path(:category=>"Education"), class: "btn btn-primary" %>
+<%= link_to "Fun", all_events_path(:category=>"Fun"), class: "btn btn-primary" %>
+<br>
+<%= link_to "$50", all_events_path(:price=>"50"), class: "btn btn-primary" %>
+<%= link_to "$100", all_events_path(:price=>"100"), class: "btn btn-primary" %>
+<%= link_to "$200", all_events_path(:price=>"200"), class: "btn btn-primary" %>
+<%= link_to "$500", all_events_path(:price=>"500"), class: "btn btn-primary" %>
+<%= link_to "$1000", all_events_path(:price=>"1000"), class: "btn btn-primary" %>
+<%= link_to "Undo Filter", all_events_path, class: "btn btn-default pull-right" %>
+
+<% @events.each do |ele| %>
+<% @creator=User.find_by_id(ele.user_id) %>
+<div class="card mb-3">
+  <div class="image">
+    <%= image_tag @picture.url%>
+  </div>
+    <div class="card-block">
+        <h4 class="card-title"><%= link_to ele.title,  event_path(ele.id) %></h4>
+        <p class="card-text"><%= ele.body %></p>
+
+        <p class="card-text">
+            <small class="text-muted">Date: <%= ele.date %></small>
+            <div class="pull-right">Created By:
+                <%= @creator.first_name %>
+                <%= @creator.last_name %>  <br>
+            </div>
+        </p>
+        <br><br>
+    </div>
+</div>
+    <%end%>

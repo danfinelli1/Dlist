@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action do
-    @conversation = Conversation.find(params[:conversation_id])
+      @conversation = Conversation.find(params[:conversation_id])
   end
 
   def index
@@ -13,6 +13,7 @@ class MessagesController < ApplicationController
       @show_more = false
       @messages = @conversation.messages
     end
+
     @message = @conversation.messages.new
   end
 

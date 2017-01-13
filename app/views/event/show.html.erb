@@ -1,24 +1,48 @@
-<%= @event.title %>
+<div class="card mb-3">
+  <div class="image">
+    <%=image_tag @picture.url%>
+  </div>
+    <div class="card-block">
+        <h4 class="card-title"><%=@event.title%></h4>
+        <p class="card-text">
+            <strong>Description:
+            </strong><%= @event.body %></p>
+        <p class="card-text">
+            <strong>Category:
+            </strong><%= @event.category %></p>
+        <p class="card-text">
+            <strong>Price:
+            </strong><%= @event.price %></p>
+        <p class="card-text">
+            <strong>Address:
+            </strong><%= @event.address %></p>
+        <p class="card-text">
+            <small class="text-muted">Date:
+                <%= @event.date %></small>
+            <div class="pull-right">
+                <% if @event.users.include?(current_user) %>
+                <%= button_to 'Unattend', { :controller => :event, :action => :remove_attender }, method: :patch %>
+            <% else %>
+                <%= button_to 'Attend', { :controller => :event, :action => :add_attender } %>
+                <% end %><br>
+                Created By:
+                <%= @creator.first_name %>
+                <%= @creator.last_name %>
+                <br>
+            </div>
+        </p>
+        <br><br><br><br>
+    </div>
+</div>
 <br>
-<%= @event.category %>
-<br>
-<%= @event.price %><br>
-<%= @event.address %><br>
-<%= @event.zipcode %>
-<%= @event.date %><br>
-<% if @event.users.include?(current_user) %>
-<%= button_to 'Unattend', { :controller => :event, :action => :remove_attender }, method: :patch %>
-<% else %>
-<%= button_to 'Attend', { :controller => :event, :action => :add_attender } %>
-<% end %>
-<div style='width: 800px;'>
-    <div id="map" style='width: 800px; height: 400px;'></div>
+<div style='width: auto;'>
+    <div id="map" style='width: auto; height: 400px;'></div>
 </div>
 <script type="text/javascript">
+
     handler = Gmaps.build('Google');
     var places = [];
-</script>
-<script type="text/javascript">
+
     $.ajax({
         method: "GET",
         url: "https://api.geocod.io/v1/geocode?q=<%=@event.zipcode%>&api_key=578e555378377dc77553955d8cc9e978fdde5c5",
@@ -28,8 +52,6 @@
             places.push({"lat": data.results[0].location.lat, "lng": data.results[0].location.lng, "infowindow": "it works"});
         }
     });
-</script>
-<script type="text/javascript">
     function initialize() {
         var miles = 3;
 
@@ -50,17 +72,16 @@
         });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-<script type="text/javascript">
-$(document).ready(function(){
-    //Check if the current URL contains '#'
-    if(document.URL.indexOf("#")==-1){
-        // Set the URL to whatever it was plus "#".
-        url = document.URL+"#";
-        location = "#";
 
-        //Reload the page
-        location.reload(true);
-    }
-});
+    $(document).ready(function () {
+        //Check if the current URL contains '#'
+        if (document.URL.indexOf("#") == -1) {
+            // Set the URL to whatever it was plus "#".
+            url = document.URL + "#";
+            location = "#";
+            //Reload the page
+            location.reload(true);
+        }
+
+    });
 </script>

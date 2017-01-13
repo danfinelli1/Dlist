@@ -1,0 +1,15 @@
+<div>
+<h3>Active Items on Sale:</h3>
+<% @user.sales.each do |sale| %>
+<div class="card profile-card">
+  <div class="card-block">
+    <p><%= link_to sale.title,  sale_path(sale.id) %></p> <br />
+        <%= sale.body[0,300]+"..." %>
+      <div class="pull-right">
+        <%= link_to("Edit", sale_edit_path(sale.id), class: 'btn btn-info btn-xs')%>
+        <%= link_to("Delete", sale_path(sale.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger btn-xs') %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
