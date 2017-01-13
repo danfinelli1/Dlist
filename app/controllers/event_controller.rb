@@ -5,7 +5,6 @@ class EventController < ApplicationController
       else
         @events = Event.all
       end
-
       if params[:price]
         @events = Event.where('price < ?', params[:price])
       end
@@ -37,6 +36,7 @@ class EventController < ApplicationController
     def show
         @event = Event.find_by_id(params[:id])
         @creator=User.find_by_id(@event.user_id)
+        @picture = Picture.where(event_id:@event.id)
     end
 
     def edit

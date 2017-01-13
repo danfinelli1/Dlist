@@ -1,32 +1,32 @@
 <div class="container">
-  <div class="row">
+    <div class="row">
 
-    <div class="col-md-3">
-          <h3>Welcome,
-          <%= @user.first_name%>!</h3>
-          <br>
-          <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
-          <br>
-          Seller Rating:
-          <%= rating_for @user, 'rating', star: @user.rating %>
-          <br />
-          <% if current_user == @user%>
-          <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
-          <%= link_to("Delete", user_path, :method => :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: 'btn btn-danger') %>
-          <%end%>
-          <hr />
-          <%= link_to("New Sale", new_event_path, class: 'btn btn-info') %>
-          <br />
-          <%= link_to("New Rent", new_event_path, class: 'btn btn-info') %>
-          <br />
-          <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
-      </div>
+        <div class="col-md-3">
+            <h3>Welcome,
+                <%= @user.first_name%>!</h3>
+            <br>
+            <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
+            <br>
+            Seller Rating:
+            <%= rating_for @user, 'rating', star: @user.rating %>
+            <br/>
+            <% if current_user == @user%>
+            <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
+            <%= link_to("Delete", user_path, :method => :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: 'btn btn-danger') %>
+            <%end%>
+            <hr/>
+            <%= link_to("New Sale", new_event_path, class: 'btn btn-info') %>
+            <br/>
+            <%= link_to("New Rent", new_event_path, class: 'btn btn-info') %>
+            <br/>
+            <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
+        </div>
 
-      <div id="profile-view" class="col-md-9" >
-        <%= render 'sales' %>
-        <%= render 'rents' %>
-        <%= render 'events' %>
-      </div>
+        <div id="profile-view" class="col-md-9">
+            <%= render 'sales' %>
+            <%= render 'rents' %>
+            <%= render 'events' %>
+        </div>
 
-  </div>
+    </div>
 </div>
