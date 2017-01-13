@@ -4,7 +4,7 @@ Edit Events Page
 
 <p> Title: <%= f.text_field :title, placeholder: :title %></p>
 <p> Description: <%= f.text_area :body %></p>
-<p> Category: <%= f.text_field :category %></p>
+<p> Category: <%= f.select :category, ["Fun", "Education", "Political", "Other" ], class: "form-control" %></</p>
 <p> Price: <%= f.number_field :price %></p>
 <p> Address: <%= f.text_field :address %></p>
 <p> Zipcode: <%= f.number_field :zipcode %></p>
