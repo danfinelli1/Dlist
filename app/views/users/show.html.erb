@@ -2,10 +2,24 @@
     <div class="row">
 
         <div class="col-md-3">
+
             <h3>Welcome,
                 <%= @user.first_name%>!</h3>
             <br>
             <%= image_tag(@user.avatar.url, :class => 'profile-picture') %>
+            <br><%= @user.first_name%>
+            is attending:
+            <%@joins = Jointable.where(user_id:@user.id)%>
+            <%@joins.each do |join| %>
+            <br>
+            <%@attending = Event.find_by_id(join.event_id)%>
+
+            Event:
+            <%= @attending.title%>
+            <br>
+            Date:
+            <%= @attending.date%>
+            <%end%>
             <br>
             Seller Rating:
             <%= rating_for @user, 'rating', star: @user.rating %>
@@ -21,24 +35,23 @@
             <br/>
             <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
         </div>
+      <div id="profile-view" class="col-md-9">
         <div id="event">
           <h3>Active Events:</h3>
           <% @user.events.each do |event| %>
           <div class="card profile-card">
-            <div class="card-block">
               <p><%= link_to event.title,  event_path(event.id) %></p> <br />
-              <%= @event.date %><br>
+              <%= event.date %><br>
                   <%= event.body[0,300]+"..." %>
                 <div class="pull-right">
                   <%= link_to("Edit", edit_event_path(event.id), class: 'btn btn-info btn-xs')%>
                   <%= link_to("Delete", event_path(event.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{event.title}?"}, class: 'btn btn-danger btn-xs') %>
                 </div>
-              </div>
             </div>
           <% end %>
         </div>
 
-        <div id="profile-view" class="col-md-9">
+        <div id="profile-view" >
             <%= render 'sales' %>
             <%= render 'rents' %>
         </div>
@@ -46,92 +59,10 @@
     </div>
 </div>
 
-<%= @user.first_name%>
-is attending:
-<%@joins = Jointable.where(user_id:@user.id)%>
-<%@joins.each do |join| %>
-<br>
-<%@attending = Event.find_by_id(join.event_id)%>
 
-Event:
-<%= @attending.title%>
-<br>
-Date:
-<%= @attending.date%>
-<%end%>
 
-<br>
-
-<br>
-<div class="col-md-7"></div>
-
-</div>
-
-<br>
-
-<br>
-
-<br>
-<%= link_to("New Event", new_event_path, class: 'btn btn-info pull-right' ) %>
-<% if current_user == @user%>
-<%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
-<%= link_to("Delete", user_path, :method => :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: 'btn btn-danger') %>
-<%end%>
-
-<div>
-
-<h3>My Events:</h3>
-<% @event.each do |ele| %>
-<% @creator=User.find_by_id(ele.user_id) %>
-<%if current_user == @creator%>
-<div class="card mb-3">
-    <div class="card-block">
-        <h4 class="card-title"><%= link_to ele.title,  event_path(ele.id) %></h4>
-        <p class="card-text"><%= ele.body %></p>
-        <p class="card-text">
-            <div class="pull-right">
-                <%= link_to("Edit", edit_event_path(ele.id), class: 'btn btn-info') %>
-                <%= link_to("Delete", event_path(ele.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{ele.title}?"}, class: 'btn btn-danger') %>
-            </div><br>
-            <small class="text-muted">Date:
-                <%= ele.date %></small>
-        </p>
-    </div>
-</div>
-<%end%>
-<%end%>
-<br>
-
-<% if !@user.sales.empty? %>
-<p>
-    Posts:
-</p>
-<% @user.sales.each do |sale| %>
-<div class="post-row">
-    <p><%= link_to sale.title,  sale_path(sale.id) %><br>
-        <%= sale.body %><br>
-    </div>
-    <p class="pull-right">
-        <%= link_to("Edit", sale_edit_path(sale.id), class: 'btn btn-info')%>
-        <%= link_to("Delete", sale_path(sale.id), :method => :delete , data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger') %>
-    </p>
-    <% end %>
-<% else %>
-    <h3>No Posts Yet</h3>
-    <% end %>
-
-    <% unless @orders.empty? %>
-    <h3>Pending Order</h3>
-    <% @orders.each do |order| %>
-    <%= link_to "#{order.title}", sale_path(order) %>
-    <%end%>
-    <%end%>
 
 </div>
 <hr>
 </div>
 <hr>
-
-<% if current_user == @user%>
-<%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
-<%end%>
