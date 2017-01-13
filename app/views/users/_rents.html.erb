@@ -1,0 +1,15 @@
+<div id="rent">
+  <h3>Active Places for rent:</h3>
+  <% @user.rents.each do |rent| %>
+  <div class="card profile-card">
+    <div class="card-block">
+      <p><%= link_to rent.title,  rent_path(rent.id) %></p> <br />
+          <%= rent.body[0,300]+"..." %>
+        <div class="pull-right">
+          <%= link_to("Edit", edit_rent_path(rent.id), class: 'btn btn-info btn-xs')%>
+          <%= link_to("Delete", rent_path(rent.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{rent.title}?"}, class: 'btn btn-danger btn-xs') %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
