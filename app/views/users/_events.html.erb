@@ -1,16 +1,1 @@
-<div id="event">
-  <h3>Active Events:</h3>
-  <% @user.event.each do |rent| %>
-  <div class="card profile-card">
-    <div class="card-block">
-      <p><%= link_to event.title,  rent_path(rent.id) %></p> <br />
-      <%= @event.date %><br>
-          <%= rent.body[0,300]+"..." %>
-        <div class="pull-right">
-          <%= link_to("Edit", edit_event_path(event.id), class: 'btn btn-info btn-xs')%>
-          <%= link_to("Delete", event_path(event.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{event.title}?"}, class: 'btn btn-danger btn-xs') %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+
