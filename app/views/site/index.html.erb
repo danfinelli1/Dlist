@@ -1,7 +1,16 @@
-<h1>Welcome to Dlist</h1>
 
 
-<!-- Temp button to sell index -->
-<li><%= link_to "Buy and Sell", sales_path, class: 'btn btn-info' %></li>
-<li><%= link_to "Rent", all_rents_path, class: 'btn btn-info' %></li>
-<li><%= link_to "Events", all_events_path, class: 'btn btn-info' %></li>
+
+    <div class="container">
+        <div class="row">
+            <div class=" welcome col-md-12">
+                <h1 class="tagline">Welcome to Dlist</h1>
+                <div class="sub">
+                <%= link_to "Buy & Sell", sales_path %> |
+                <%= link_to "Housing", all_rents_path%> |
+                <%= link_to "Events", all_events_path%>
+              </div>
+
+            </div>
+        </div>
+    </div>

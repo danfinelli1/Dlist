@@ -31,6 +31,17 @@
       <label for="name">Bathroom</label>
       <%= f.number_field :bath, class: "form-control", placeholder: "Bathroom" %>
     </fieldset>
+
+    <fieldset class="form-group">
+      <label for="name">Address</label>
+      <%= f.number_field :address, class: "form-control", placeholder: "Address" %>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="name">Zipcode</label>
+      <%= f.number_field :zipcode, class: "form-control", placeholder: "Zipcode" %>
+    </fieldset>
+
     <%= f.fields_for :images do |builder| %>
       <p>
         <%= builder.label :caption, "Image Caption" %>
@@ -42,15 +53,6 @@
       </p>
     <% end %>
 
-    <fieldset class="form-group">
-      <label for="name">Address</label>
-      <%= f.number_field :address, class: "form-control", placeholder: "Address" %>
-    </fieldset>
-
-    <fieldset class="form-group">
-      <label for="name">Zipcode</label>
-      <%= f.number_field :zipcode, class: "form-control", placeholder: "Zipcode" %>
-    </fieldset>
 
     <fieldset class="form-group">
       <%= f.hidden_field :user_id, class: "form-control", :value => current_user.id %>

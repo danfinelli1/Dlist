@@ -113,9 +113,6 @@ Date:
     <h3>No Posts Yet</h3>
     <% end %>
 
-</div>
-<hr>
-<div>
     <% unless @orders.empty? %>
     <h3>Pending Order</h3>
     <% @orders.each do |order| %>
@@ -125,3 +122,9 @@ Date:
 
 </div>
 <hr>
+</div>
+<hr>
+
+<% if current_user == @user%>
+<%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
+<%end%>
