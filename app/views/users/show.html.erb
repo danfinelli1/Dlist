@@ -9,55 +9,31 @@
           <br>
           Seller Rating:
           <%= rating_for @user, 'rating', star: @user.rating %>
+          <br />
           <% if current_user == @user%>
           <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
           <%= link_to("Delete", user_path, :method => :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: 'btn btn-danger') %>
           <%end%>
+          <hr />
+          <%= link_to("New Sale", new_event_path, class: 'btn btn-info') %>
+          <br />
+          <%= link_to("New Rent", new_event_path, class: 'btn btn-info') %>
           <br />
           <%= link_to("New Event", new_event_path, class: 'btn btn-info') %>
+          <!-- <br />
+          <button id="sales-view" type="button" class="btn btn-primary">Sales</button>
           <br />
-          <%= link_to("Sales", class: 'btn btn-info btn-xs')%>
+          <button id="rents-view" type="button" class="btn btn-primary">Rent</button>
+          <%= link_to("Rent", class: 'btn btn-danger btn-xs rents-view') %>
           <br />
-          <%= link_to("Rent", class: 'btn btn-danger btn-xs') %>
-          <br />
-          <%= link_to("Events", class: 'btn btn-danger btn-xs') %>
+          <%= link_to("Events", class: 'btn btn-danger btn-xs events-view') %> -->
       </div>
 
-      <div id="sale" class="col-md-9" >
-        <div >
-
-        <h3>Active Items on Sale:</h3>
-        <% @user.sales.each do |sale| %>
-        <div class="card profile-card">
-          <div class="card-block">
-            <p><%= link_to sale.title,  sale_path(sale.id) %></p> <br />
-                <%= sale.body[0,300]+"..." %>
-              <div class="pull-right">
-                <%= link_to("Edit", sale_edit_path(sale.id), class: 'btn btn-info btn-xs')%>
-                <%= link_to("Delete", sale_path(sale.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{sale.title}?"}, class: 'btn btn-danger btn-xs') %>
-              </div>
-            </div>
-          </div>
-          <% end %>
-        </div>
-
-          <div id="rent" style="visibility:hidden">
-            <h3>Active Places for rent:</h3>
-            <% @user.rents.each do |rent| %>
-            <div class="card profile-card">
-              <div class="card-block">
-                <p><%= link_to rent.title,  rent_path(rent.id) %></p> <br />
-                    <%= rent.body[0,300]+"..." %>
-                  <div class="pull-right">
-                    <%= link_to("Edit", edit_rent_path(rent.id), class: 'btn btn-info btn-xs')%>
-                    <%= link_to("Delete", rent_path(rent.id), :method => :delete, data: {confirm: "Are you sure you want to delete #{rent.title}?"}, class: 'btn btn-danger btn-xs') %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-        </div>
+      <div id="profile-view" class="col-md-9" >
+        <%= render 'sales' %>
+        <%= render 'rents' %>
+        <%= render 'events' %>
       </div>
-
 
   </div>
 </div>
