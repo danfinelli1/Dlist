@@ -1,6 +1,6 @@
 <div id="event">
   <h3>Active Events:</h3>
-  <% @user.events.each do |rent| %>
+  <% @user.event.each do |rent| %>
   <div class="card profile-card">
     <div class="card-block">
       <p><%= link_to event.title,  rent_path(rent.id) %></p> <br />
